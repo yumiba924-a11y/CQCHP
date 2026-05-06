@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>キャピタル・クエスト株式会社 | Capital Quest Corporation</title>
+  <meta name="description" content="独立系M&Aアドバイザリー。キャピタル フィナンシャルホールディングス（CFH）グループの一員として、20ヵ国超のグローバル・アライアンス（GAP）を通じてクロスボーダーM&Aアドバイザリーを提供する。">
+  <link rel="canonical" href="https://capital-qc.co.jp/">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260503y">
+</head>
+<body>
+
+<!-- ===========================================================
+     HEADER / NAV
+     =========================================================== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="site-logo" aria-label="Capital Quest Corporation トップへ">
+      <img src="assets/logo/cqc/cqc-logo-transparent.png" alt="Capital Quest Corporation">
+    </a>
+    <button class="site-nav-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+      <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="グローバル">
+      <a href="index.html" class="is-active">ホーム</a>
+      <a href="about.html">会社情報</a>
+      <a href="services.html">事業内容</a>
+      <a href="track-record.html">過去実績</a>
+      <a href="team.html">メンバー</a>
+    </nav>
+    <!-- Phase 2: 言語切替（JP/EN）非表示中。CSSクラスは保持。
+    <div class="site-nav__lang" aria-label="言語切替">
+      <span class="is-active">JP</span>
+      <span aria-hidden="true">/</span>
+      <span>EN</span>
+    </div>
+    -->
+  </div>
+</header>
+
+<main>
+
+  <!-- =========================================================
+       HERO  (Houlihan-style full-bleed media / TK→NY→HK→VN crossfade)
+       ========================================================= -->
+  <section class="hero" aria-labelledby="hero-h1">
+
+    <div class="hero__media" aria-hidden="true">
+      <div class="hero__media-layer is-active" data-scene="tk">
+        <video autoplay muted loop playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/img/hero/hero-tk-poster.jpg">
+          <source src="assets/video/TK.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero__media-layer" data-scene="ny">
+        <video autoplay muted loop playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/img/hero/hero-ny-poster.jpg">
+          <source src="assets/video/NY.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero__media-layer" data-scene="hk">
+        <video autoplay muted loop playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/img/hero/hero-hk-poster.jpg">
+          <source src="assets/video/HK2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero__media-layer" data-scene="vn">
+        <video autoplay muted loop playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/img/hero/hero-vn-poster.jpg">
+          <source src="assets/video/VN.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <!-- City indicator (top-right) -->
+    <div class="hero__cities" aria-hidden="true">
+      <span class="hero__city-dot is-active" data-i="0"></span>
+      <span class="hero__city-dot" data-i="1"></span>
+      <span class="hero__city-dot" data-i="2"></span>
+      <span class="hero__city-dot" data-i="3"></span>
+      <span class="hero__city-label" id="hero-city-label">TOKYO</span>
+    </div>
+
+    <!-- Telop (bottom-left) — JS が cities[] から差し替える -->
+    <div class="hero__telop" id="hero-telop" aria-live="polite"></div>
+
+  </section>
+
+  <!-- =========================================================
+       CHAIRMAN'S MESSAGE  (SBI inspired layout)
+       ========================================================= -->
+  <section class="section chairman" aria-labelledby="chairman-h">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Chairman's Message</span>
+        <h2 id="chairman-h" class="h2">代表メッセージ</h2>
+      </div>
+
+      <div class="chairman__grid">
+        <div class="chairman__text">
+          <h3 class="chairman__pull">独立自尊の精神で、公正な助言を。</h3>
+          <div class="chairman__body">
+            <p class="jp-justify">私は1974年に野村證券、1983年にモルガン・スタンレー、1988年にCSファースト・ボストン（後のクレディ・スイス、現UBS）でキャリアを積み、1996年に独立しました。通算で半世紀以上、投資銀行業務に携わっております。</p>
+            <p class="jp-justify">日本企業による海外M&amp;Aには、残念ながら失敗事例が少なくありません。その多くは、国内外の大手投資銀行や証券会社からの助言を十分に検証せずに受け入れた結果と認識しております。弊社は独立系投資銀行ブティックの立場から、企業のM&amp;A意思決定に際し、取締役会に対して中立かつ客観的な助言を提供することを使命としております。</p>
+            <p class="jp-justify">2008年10月、私は香港で「Global Alliance Partners（GAP）」を共同創設し、現在は日本代表を務めております。GAPメンバーを通じて、各国市場の信頼性の高い情報をリアルタイムで入手する体制を構築しており、海外M&amp;Aで極めて重要な現地インテリジェンスを、最短距離でお客様へお届けしております。</p>
+            <p class="jp-justify">半世紀以上にわたる投資銀行業務の経験と、GAPネットワークが擁する情報網。これらが、日本企業の経営戦略およびM&amp;A戦略の策定において、皆さまの確かな判断の一助となれば幸いです。</p>
+          </div>
+        </div>
+
+        <figure class="chairman__photo">
+          <div class="chairman__photo-frame">
+            <img src="assets/img/team/tsutsui.png" alt="筒井 豊春">
+          </div>
+          <figcaption class="chairman__sign">
+            <span class="chairman__sign-company">キャピタル・クエスト株式会社</span>
+            <span class="chairman__sign-title">代表取締役会長</span>
+            <span class="chairman__sign-name">筒井 豊春</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TRACK RECORD  (Houlihan-style full-bleed carousel, 16 deals)
+       ========================================================= -->
+  <section class="transactions" aria-labelledby="tx-h">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Track Record</span>
+        <h2 id="tx-h">過去実績</h2>
+      </div>
+    </div>
+
+    <div class="transactions__viewport" aria-label="主要案件カルーセル">
+      <div class="transactions__track">
+
+        <!-- ============== JAPAN (8) ============== -->
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Japan</span>
+            <span class="tx-card__type">Block Trade</span>
+          </div>
+          <div class="tx-card__logo tx-card__logo--dual">
+            <img src="assets/img/track-record/logos/goldman-sachs.svg" alt="Goldman Sachs" class="tx-card__logo-img">
+            <span class="tx-card__logo-sep" aria-hidden="true"></span>
+            <img src="assets/img/track-record/logos/sbi-securities.png" alt="イー・トレード証券" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">Goldman Sachs<br><span class="tx-card__title-sep">×</span><br>イー・トレード証券</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">ゴールドマン・サックスが運営するファンド保有のイー・トレード証券株式会社の株式について、日本最大級のブロックトレードを執行。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Japan</span>
+            <span class="tx-card__type">Domestic</span>
+          </div>
+          <div class="tx-card__logo">
+            <img src="assets/img/track-record/logos/sbi-holdings.svg" alt="SoftBank Investment（現SBIホールディングス）" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">SOFTBANK INVESTMENT<br>国内企業買収</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">ソフトバンク・インベストメント株式会社（現SBIホールディングス）による国内企業買収。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Japan</span>
+            <span class="tx-card__type">Domestic</span>
+          </div>
+          <div class="tx-card__logo">
+            <img src="assets/img/track-record/logos/ardepro.png" alt="アルデプロ" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">アルデプロ<br><span class="tx-card__title-sep">×</span><br>JRS</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">アルデプロ株式会社によるジャパンリアルティスーパービジョン株式会社（JRS）の買収。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Japan</span>
+            <span class="tx-card__type">Domestic</span>
+          </div>
+          <div class="tx-card__logo tx-card__logo--dual">
+            <img src="assets/img/track-record/logos/kyusai.svg" alt="キューサイ" class="tx-card__logo-img">
+            <span class="tx-card__logo-sep" aria-hidden="true"></span>
+            <img src="assets/img/track-record/logos/radish-boya.jpg" alt="らでぃっしゅぼーや" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">キューサイ<br><span class="tx-card__title-sep">×</span><br>らでぃっしゅぼーや</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">キューサイ株式会社の子会社らでぃっしゅぼーや株式会社の売却アドバイザリー。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Japan</span>
+            <span class="tx-card__type">Domestic</span>
+          </div>
+          <div class="tx-card__logo tx-card__logo--dual">
+            <img src="assets/img/track-record/logos/jafco.svg" alt="ジャフコ" class="tx-card__logo-img">
+            <span class="tx-card__logo-sep" aria-hidden="true"></span>
+            <img src="assets/img/track-record/logos/radish-boya.jpg" alt="らでぃっしゅぼーや" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">ジャフコ<br><span class="tx-card__title-sep">×</span><br>らでぃっしゅぼーや</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">株式会社ジャフコによるキューサイ株式会社の子会社らでぃっしゅぼーや株式会社の買収。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Japan</span>
+            <span class="tx-card__type">PE / Buyout</span>
+          </div>
+          <div class="tx-card__logo tx-card__logo--dual">
+            <img src="assets/img/track-record/logos/japan-industrial-partners.png" alt="日本産業パートナーズ" class="tx-card__logo-img">
+            <span class="tx-card__logo-sep" aria-hidden="true"></span>
+            <img src="assets/img/track-record/logos/kyusai.svg" alt="キューサイ" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">日本産業パートナーズ<br><span class="tx-card__title-sep">×</span><br>キューサイ</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">日本産業パートナーズ株式会社によるニチレイフーズの子会社キューサイ株式会社の買収。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Japan</span>
+            <span class="tx-card__type">Domestic</span>
+          </div>
+          <div class="tx-card__logo">
+            <img src="assets/img/track-record/logos/global-bridge.jpg" alt="global bridge HOLDINGS" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">global bridge HOLDINGS<br><span class="tx-card__title-sep">×</span><br>東京ライフケア</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">株式会社global bridge HOLDINGS（TOKYO PRO Market上場）による株式会社東京ライフケアの買収。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Japan</span>
+            <span class="tx-card__type">Domestic</span>
+          </div>
+          <div class="tx-card__logo">
+            <img src="assets/img/track-record/logos/jalux.png" alt="Jalux" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">Capital Partners Holdings<br><span class="tx-card__title-sep">×</span><br>Jalux</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">Capital Partners Holdingsによる、ティエリーマルクスジャパン株式会社の株主であるJaluxへのアドバイザリー。</p>
+        </article>
+
+        <!-- ============== NORTH AMERICA (3) ============== -->
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">North America</span>
+            <span class="tx-card__type">Cross-Border</span>
+          </div>
+          <div class="tx-card__logo tx-card__logo--dual">
+            <img src="assets/img/track-record/logos/sbi-holdings.svg" alt="SoftBank Investment" class="tx-card__logo-img">
+            <span class="tx-card__logo-sep" aria-hidden="true"></span>
+            <img src="assets/img/track-record/logos/funai.png" alt="FUNAI" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">ソフトバンク・インベストメント<br><span class="tx-card__title-sep">×</span><br>FUNAI</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">ソフトバンク・インベストメント株式会社（現SBIホールディングス）の子会社による米国FUNAI Corporationへの資本参加。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">North America</span>
+            <span class="tx-card__type">Cross-Border</span>
+          </div>
+          <div class="tx-card__logo tx-card__logo--dual">
+            <img src="assets/img/track-record/logos/starts.svg" alt="スターツアメニティー" class="tx-card__logo-img">
+            <span class="tx-card__logo-sep" aria-hidden="true"></span>
+            <img src="assets/img/track-record/logos/bridgepoint.png" alt="BridgePoint International" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">スターツアメニティー<br><span class="tx-card__title-sep">×</span><br>BridgePoint International</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">スターツアメニティー株式会社によるBridgePoint International LLC（米国）の子会社ブリッジポイント・ジャパン株式会社の買収。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">North America</span>
+            <span class="tx-card__type">Real Estate</span>
+          </div>
+          <div class="tx-card__logo" aria-hidden="true">
+            <span class="tx-card__logo-mark">NY Commercial Real Estate</span>
+          </div>
+          <h3 class="tx-card__title">ニューヨーク商業不動産取引</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">経営陣のNY現地パートナーとの長期的信頼関係に基づく、ニューヨーク商業不動産の取得・売却支援。</p>
+        </article>
+
+        <!-- ============== GREATER CHINA (2) ============== -->
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Greater China</span>
+            <span class="tx-card__type">Cross-Border</span>
+          </div>
+          <div class="tx-card__logo" aria-hidden="true">
+            <span class="tx-card__logo-mark">京城重工 / 長野工業</span>
+          </div>
+          <h3 class="tx-card__title">北京京城重工<br><span class="tx-card__title-sep">×</span><br>長野工業</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">北京京城重工機械有限責任公司による長野工業株式会社の買収。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Greater China</span>
+            <span class="tx-card__type">Cross-Border</span>
+          </div>
+          <div class="tx-card__logo tx-card__logo--dual">
+            <img src="assets/img/track-record/logos/human-holdings.png" alt="ヒューマンホールディングス" class="tx-card__logo-img">
+            <span class="tx-card__logo-sep" aria-hidden="true"></span>
+            <img src="assets/img/track-record/logos/daijob.svg" alt="ダイジョブ" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">ヒューマンホールディングス<br><span class="tx-card__title-sep">×</span><br>ダイジョブ</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">ヒューマンホールディングス株式会社による株式会社ダイジョブ（香港）の買収。</p>
+        </article>
+
+        <!-- ============== SOUTHEAST ASIA (3) ============== -->
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Southeast Asia</span>
+            <span class="tx-card__type">Cross-Border</span>
+          </div>
+          <div class="tx-card__logo tx-card__logo--dual">
+            <img src="assets/img/track-record/logos/thai-oil.svg" alt="Thai Oil" class="tx-card__logo-img">
+            <span class="tx-card__logo-sep" aria-hidden="true"></span>
+            <img src="assets/img/track-record/logos/eneos.svg" alt="新日本石油（現ENEOS）" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">タイオイル<br><span class="tx-card__title-sep">×</span><br>新日本石油</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">タイオイル社（タイ）による新日本石油子会社のタイ・パラキシレン社／タイ・ルーブベース社の株式交換買収。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Southeast Asia</span>
+            <span class="tx-card__type">Cross-Border</span>
+          </div>
+          <div class="tx-card__logo">
+            <img src="assets/img/track-record/logos/obic.png" alt="オービック" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">オービック<br><span class="tx-card__title-sep">×</span><br>Global CyberSoft</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">オービック社によるGlobal CyberSoft社（本社：米国／主要拠点ベトナム）への資本参加。</p>
+        </article>
+
+        <article class="tx-card">
+          <div class="tx-card__head">
+            <span class="tx-card__region">Southeast Asia</span>
+            <span class="tx-card__type">Cross-Border</span>
+          </div>
+          <div class="tx-card__logo">
+            <img src="assets/img/track-record/logos/obc.svg" alt="OBC（オービックビジネスコンサルタント）" class="tx-card__logo-img">
+          </div>
+          <h3 class="tx-card__title">OBC<br><span class="tx-card__title-sep">×</span><br>Global CyberSoft</h3>
+          <span class="tx-card__rule" aria-hidden="true"></span>
+          <p class="tx-card__desc">OBC（オービックビジネスコンサルタント）による、Global CyberSoft社関連の追加案件のアドバイザリー。</p>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="transactions__cta">
+        <a href="track-record.html" class="transactions__cta-link">
+          過去実績一覧へ
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       GAP NETWORK (focal section)
+       ========================================================= -->
+  <section class="gap-network" aria-labelledby="gap-h">
+    <div class="container">
+      <div class="section-header gap-network__header">
+        <span class="eyebrow">Global Alliance Partners</span>
+        <h2 id="gap-h">20か国超の投資銀行ネットワーク</h2>
+        <p class="gap-network__lead">弊社代表は2008年に香港設立のGlobal Alliance Partners（GAP）の共同創設メンバーです。</p>
+        <p class="gap-network__lead">各国の独立系投資銀行が知見を持ち寄り、クロスボーダー案件を遂行します。</p>
+      </div>
+
+      <div class="gap-stats">
+        <div>
+          <div class="gap-stat__num"><span class="num">20+</span></div>
+          <div class="gap-stat__label">Countries</div>
+        </div>
+        <div>
+          <div class="gap-stat__num"><span class="num">5</span></div>
+          <div class="gap-stat__label">Continents</div>
+        </div>
+        <div>
+          <div class="gap-stat__num"><span class="num">2008</span></div>
+          <div class="gap-stat__label">Founded in Hong Kong</div>
+        </div>
+      </div>
+
+      <!-- ============== GAP Brand Logo (white version on forest BG) ============== -->
+      <div class="gap-network__brand">
+        <a href="https://globalalliancepartners.com/" target="_blank" rel="noopener noreferrer" class="gap-network__brand-link" aria-label="Global Alliance Partners 公式サイト">
+          <img src="assets/img/gap/gap-logo-white-hd.png" alt="Global Alliance Partners" class="gap-network__brand-logo">
+        </a>
+      </div>
+
+      <!-- ============== Conference Photo ============== -->
+      <figure class="gap-network__conf">
+        <img src="assets/img/gap/group-shot-2026.jpg" alt="GAP Annual Conference 2026" class="gap-network__conf-img">
+        <figcaption class="gap-network__conf-caption">GAP Annual Conference · Bangkok, Thailand · 2026</figcaption>
+      </figure>
+
+      <!-- ============== Orange CTA ============== -->
+      <div class="gap-network__cta">
+        <a href="https://globalalliancepartners.com/gap-members/"
+           class="gap-network__cta-btn"
+           target="_blank" rel="noopener noreferrer">
+          GAP公式サイトへ
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       ACCESS
+       ========================================================= -->
+  <section class="access" aria-labelledby="access-h">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Access</span>
+        <h2 id="access-h">アクセス</h2>
+      </div>
+
+      <div class="access__grid">
+        <div class="access__info">
+          <dl>
+            <dt>所在地</dt>
+            <dd>〒101-0047<br>東京都千代田区内神田 1-13-7<br>四国ビルディング</dd>
+            <dt>電話</dt>
+            <dd>03-4543-1150（代表）</dd>
+            <dt>FAX</dt>
+            <dd>03-4543-1069</dd>
+            <dt>最寄駅</dt>
+            <dd>東京メトロ丸ノ内線「淡路町駅」B6 出口 徒歩4分<br>東京メトロ千代田線「新御茶ノ水駅」B6 出口 徒歩4分<br>JR・東京メトロ「神田駅」西口 徒歩7分<br>東京メトロ「大手町駅」C1 出口 徒歩7分</dd>
+          </dl>
+
+          <a href="mailto:info@capital-qc.co.jp" class="access__contact-btn">
+            お問い合わせ
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="access__map">
+          <iframe
+            src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%86%85%E7%A5%9E%E7%94%B01-13-7&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            width="100%" height="100%" frameborder="0" style="border:0"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="キャピタル・クエスト株式会社 所在地（東京都千代田区内神田1-13-7 四国ビルディング）"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===========================================================
+     INLINE JS (タブ切替 — GAP Network / About)
+     =========================================================== -->
+<script>
+(function () {
+  function bindTabs(tabSelector, panelSelector) {
+    var tabs = document.querySelectorAll(tabSelector);
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function (e) {
+        e.preventDefault();
+        var targetId = tab.dataset.target;
+        if (!targetId) return;
+
+        // タブの状態
+        tabs.forEach(function (t) {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+
+        // パネルの状態
+        var panels = document.querySelectorAll(panelSelector);
+        panels.forEach(function (p) { p.classList.remove('is-active'); });
+        var target = document.getElementById(targetId);
+        if (target) target.classList.add('is-active');
+      });
+    });
+  }
+
+  // Track Record カルーセル：カードを複製してマーキー無限ループ化
+  (function () {
+    var track = document.querySelector('.transactions__track');
+    if (!track) return;
+    var cards = track.querySelectorAll('.tx-card');
+    if (cards.length < 2) return;
+    // 同じカード群をもう一度クローンして連結 → CSS animation で -50% で1周
+    cards.forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');  // クローンはスクリーンリーダーから隠す
+      track.appendChild(clone);
+    });
+  })();
+
+  // Hero crossfade + telop (TK → NY → HK → VN, 7.5s per city)
+  var layers     = document.querySelectorAll('.hero__media-layer');
+  var telop      = document.getElementById('hero-telop');
+  var cityLabel  = document.getElementById('hero-city-label');
+  var cityDots   = document.querySelectorAll('.hero__city-dot');
+
+  var cities = [
+    { key:'tk', label:'TOKYO',     keywordEn:'INDEPENDENT',         keywordJp:'独立であり続ける',         startTime: 0, playbackRate: 1    },
+    { key:'ny', label:'NEW YORK',  keywordEn:'TRACK RECORD',        keywordJp:'半世紀の実績',             startTime: 0, playbackRate: 0.75 },  // 7.6s 動画を10.1sに引き伸ばしループ点を隠す
+    { key:'hk', label:'HONG KONG', keywordEn:'CROSSBORDER NETWORK', keywordJp:'20ヵ国超のネットワーク',   startTime: 0, playbackRate: 1    },
+    { key:'vn', label:'VIETNAM',   keywordEn:'THE NEXT FUTURE',     keywordJp:'高成長アジアへの接続',     startTime: 0, playbackRate: 1    }
+  ];
+
+  var CITY_DURATION = 7500;   // 1サイクル
+  var EXIT_TRIGGER  = 5500;   // 退場アニメ開始（テキスト1.6s + バー1.6s 同時退場）
+  var CROSSFADE_MS  = 2100;   // CSS opacity transition (2s) + 余裕
+  var WARMUP_MS     = 300;    // 次動画の先行再生（フェードイン時のデコード遅延を回避）
+
+  if (layers.length > 1) {
+    var idx = 0;
+    var exitTimer = null;
+
+    var prefersReduce = false;
+    try { prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+    // 初期化：先頭だけ再生、他は一時停止（cities[].playbackRate を反映）
+    layers.forEach(function (l, i) {
+      var v = l.querySelector('video');
+      if (!v) return;
+      var st = (cities[i] && cities[i].startTime) || 0;
+      var pr = (cities[i] && cities[i].playbackRate) || 1;
+      try { v.playbackRate = pr; } catch (e) {}
+      if (i === 0) { try { v.currentTime = st; v.play(); } catch (e) {} }
+      else         { try { v.pause(); v.currentTime = st; } catch (e) {} }
+    });
+
+    function renderTelop(i) {
+      if (!telop) return;
+      var c = cities[i];
+      telop.className = 'hero__telop is-enter';
+      telop.innerHTML =
+        '<div class="hero__telop-bar is-enter" id="hero-telop-bar">' +
+          '<div class="hero__telop-jp">' + c.keywordJp + '</div>' +
+          '<div class="hero__telop-en">' + c.keywordEn + '</div>' +
+        '</div>';
+    }
+
+    function triggerExit() {
+      if (!telop) return;
+      telop.classList.remove('is-enter');
+      telop.classList.add('is-exit');
+      // 帯と文字を同時退場させる
+      var bar = document.getElementById('hero-telop-bar');
+      if (bar) {
+        bar.classList.remove('is-enter');
+        bar.classList.add('is-exit');
+      }
+    }
+
+    function updateIndicator(i) {
+      cityDots.forEach(function (d, j) { d.classList.toggle('is-active', j === i); });
+      if (cityLabel) cityLabel.textContent = cities[i].label;
+    }
+
+    // 次動画を事前ウォームアップ（再生開始するが is-active は付けない＝まだ不可視）
+    function warmupLayer(i) {
+      var v = layers[i] && layers[i].querySelector('video');
+      if (!v) return;
+      var st = (cities[i] && cities[i].startTime) || 0;
+      var pr = (cities[i] && cities[i].playbackRate) || 1;
+      try { v.playbackRate = pr; v.currentTime = st; var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
+    }
+
+    function activateLayer(nextIdx) {
+      if (nextIdx === idx) return;
+      var prevIdx = idx;
+      // 次動画を保険として再度 play（warmup で開始済みでも問題なし）
+      var next = layers[nextIdx].querySelector('video');
+      if (next && next.paused) { try { next.play(); } catch (e) {} }
+
+      // クロスフェード開始
+      layers[prevIdx].classList.remove('is-active');
+      idx = nextIdx;
+      layers[idx].classList.add('is-active');
+      // 旧動画はフェードアウト完了後に停止（currentTime は startTime にリセット＝次サイクル開始時の準備）
+      setTimeout(function () {
+        var prev = layers[prevIdx].querySelector('video');
+        if (prev) {
+          var st = (cities[prevIdx] && cities[prevIdx].startTime) || 0;
+          try { prev.pause(); prev.currentTime = st; } catch (e) {}
+        }
+      }, CROSSFADE_MS);
+    }
+
+    function goToCity(i) {
+      if (exitTimer) clearTimeout(exitTimer);
+      activateLayer(i);
+      renderTelop(i);
+      updateIndicator(i);
+      exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
+    }
+
+    // 初期テロップ（layer[0]はHTMLで既に is-active）
+    renderTelop(0);
+    updateIndicator(0);
+
+    if (!prefersReduce) {
+      exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
+
+      // ウォームアップ → 切替 のペアでサイクルを回す
+      var cycleTimer = null;
+      function scheduleNext() {
+        // CITY_DURATION - WARMUP_MS で次動画を事前再生
+        var warmupAt = CITY_DURATION - WARMUP_MS;
+        cycleTimer = setTimeout(function () {
+          var nextIdx = (idx + 1) % cities.length;
+          warmupLayer(nextIdx);
+          // WARMUP_MS 後に実際の切替（クロスフェード開始）
+          setTimeout(function () {
+            goToCity(nextIdx);
+            scheduleNext();
+          }, WARMUP_MS);
+        }, warmupAt);
+      }
+      scheduleNext();
+    }
+  }
+})();
+</script>
+<script src="assets/js/site.js?v=20260503b" defer></script>
+
+<!-- ===========================================================
+     FOOTER
+     =========================================================== -->
+<!-- JVCA Support Section -->
+<section class="site-support" aria-label="JVCA支援">
+  <div class="container">
+    <div class="site-support__inner">
+      <div class="site-support__logo">
+        <img src="assets/img/group/jvca.png" alt="JVCA — 日本・ベトナム文化交流協会">
+      </div>
+      <div class="site-support__text">
+        <p class="site-support__line">当社は <a href="https://www.jvca.or.jp/" target="_blank" rel="noopener noreferrer">一般財団法人 日本・ベトナム文化交流協会</a> の活動を支援しています</p>
+        <p class="site-support__since">Foundation of Japan-Vietnam Cultural Association — Since 1992</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+<div class="site-footer__grid">
+
+      <div class="site-footer__brand">
+        <img src="assets/logo/cqc/cqc-logo-white.png" alt="Capital Quest Corporation">
+      </div>
+
+      <div class="site-footer__col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="about.html">会社情報</a></li>
+          <li><a href="services.html">事業内容</a></li>
+          <li><a href="track-record.html">過去実績</a></li>
+          <li><a href="team.html">メンバー</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <h4>Contact</h4>
+        <address>
+          〒101-0047<br>
+          東京都千代田区内神田 1-13-7<br>
+          四国ビルディング<br>
+          TEL 03-4543-1150<br>
+          FAX 03-4543-1069
+        </address>
+      </div>
+
+      <div class="site-footer__col">
+        <h4>Group</h4>
+        <ul>
+          <li>Capital Financial Holdings</li>
+        </ul>
+      </div>
+
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>&copy; 2026 Capital Quest Corporation</span>
+      <span>Member of Capital Financial Holdings Group</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
