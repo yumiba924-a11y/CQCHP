@@ -899,6 +899,13 @@ ul, ol { list-style: none; }
   .gap-network .section-header h2 { white-space: nowrap; }
 }
 
+/* GAP セクションだけ モバイル/タブレットで縮小 */
+@media (max-width: 1024px) {
+  .gap-network .eyebrow,
+  .gap-network__eyebrow { font-size: 0.875rem; }   /* 14px */
+  .gap-network .section-header h2 { font-size: 1.5rem; }  /* 24px */
+}
+
 .gap-network__eyebrow,
 .gap-network .eyebrow {
   font-family: var(--font-sans-en);
