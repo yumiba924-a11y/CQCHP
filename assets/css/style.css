@@ -1739,6 +1739,11 @@ ul, ol { list-style: none; }
   max-width: 140px;
 }
 
+/* FUNAI は白ロゴのため白背景で消える → invert で黒に反転 */
+.tx-card__logo-img[src*="funai"] {
+  filter: invert(1);
+}
+
 .tx-card__logo-sep {
   display: block;
   width: 1px;
