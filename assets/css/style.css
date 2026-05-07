@@ -545,13 +545,12 @@ ul, ol { list-style: none; }
   text-transform: uppercase;
 }
 
-/* Telop block (vertically centered, left-aligned) */
+/* Telop block (bottom-left on PC; mobile re-centers vertically via @media) */
 .hero__telop {
   position: absolute;
   z-index: 3;
-  top: 50%;
+  bottom: clamp(48px, 8vh, 100px);
   left: clamp(24px, 6vw, 80px);
-  transform: translateY(-50%);
   max-width: 720px;
   pointer-events: none;
 }
@@ -640,7 +639,7 @@ ul, ol { list-style: none; }
 
 @media (max-width: 768px) {
   .hero { height: 38vh; min-height: 300px; padding-block: 0; }
-  .hero__telop      { left: 16px; right: 16px; max-width: none; }
+  .hero__telop      { top: 50%; bottom: auto; left: 16px; right: 16px; transform: translateY(-50%); max-width: none; }
   .hero__telop-bar  { padding: 12px 14px; }
   .hero__telop-jp   { white-space: normal; font-size: clamp(16px, 4.4vw, 22px); margin-bottom: 8px; }
   .hero__telop-en   { font-size: 10px; letter-spacing: 0.24em; }
