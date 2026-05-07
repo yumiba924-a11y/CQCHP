@@ -2590,7 +2590,7 @@ ul, ol { list-style: none; }
   display: block;
 }
 @media (max-width: 1024px) {
-  .group-card__name { font-size: 0.875rem; }  /* 14px (元 20px) */
+  .group-card__name { font-size: 0.8125rem; }  /* 13px (元 20px) */
 }
 .group-card__role {
   display: block;
