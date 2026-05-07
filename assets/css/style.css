@@ -1733,10 +1733,10 @@ ul, ol { list-style: none; }
   max-width: 110px;
 }
 
-/* BridgePoint は正方形ロゴのため横幅制約を緩めて視認性確保（1.3 倍） */
+/* BridgePoint は正方形ロゴのため横幅制約を緩めて視認性確保（2 倍） */
 .tx-card__logo--dual .tx-card__logo-img[src*="bridgepoint"] {
-  max-height: 91px;
-  max-width: 91px;
+  max-height: 140px;
+  max-width: 140px;
 }
 
 .tx-card__logo-sep {
