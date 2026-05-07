@@ -531,6 +531,8 @@
 
   var CITY_DURATION = 7500;   // 1サイクル
   var EXIT_TRIGGER  = 5500;   // 退場アニメ開始（テキスト1.6s + バー1.6s 同時退場）
+  var CROSSFADE_MS  = 2100;   // CSS opacity transition (2s) + 余裕
+  var WARMUP_MS     = 300;    // 次動画の先行再生（フェードイン時のデコード遅延を回避）
 
   if (layers.length > 1) {
     var idx = 0;
@@ -578,31 +580,34 @@
       if (cityLabel) cityLabel.textContent = cities[i].label;
     }
 
-    // iOS Safari は複数 video の同時再生を弾くため、旧→新を逐次切り替える
+    // 次動画を事前ウォームアップ（再生開始するが is-active は付けない＝まだ不可視）
+    function warmupLayer(i) {
+      var v = layers[i] && layers[i].querySelector('video');
+      if (!v) return;
+      var st = (cities[i] && cities[i].startTime) || 0;
+      var pr = (cities[i] && cities[i].playbackRate) || 1;
+      try { v.playbackRate = pr; v.currentTime = st; var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
+    }
+
     function activateLayer(nextIdx) {
       if (nextIdx === idx) return;
       var prevIdx = idx;
-
-      // 旧動画を即停止（同時再生にしない）
-      var prev = layers[prevIdx].querySelector('video');
-      if (prev) {
-        var prevSt = (cities[prevIdx] && cities[prevIdx].startTime) || 0;
-        try { prev.pause(); prev.currentTime = prevSt; } catch (e) {}
-      }
-
-      // 次動画を再生（クロスフェード中は poster → 動画開始）
+      // 次動画を保険として再度 play（warmup で開始済みでも問題なし）
       var next = layers[nextIdx].querySelector('video');
-      if (next) {
-        var nextSt = (cities[nextIdx] && cities[nextIdx].startTime) || 0;
-        var nextPr = (cities[nextIdx] && cities[nextIdx].playbackRate) || 1;
-        try { next.playbackRate = nextPr; next.currentTime = nextSt; } catch (e) {}
-        safePlay(next, cities[nextIdx].key + ' (activate)');
-      }
+      if (next && next.paused) { try { next.play(); } catch (e) {} }
 
       // クロスフェード開始
       layers[prevIdx].classList.remove('is-active');
       idx = nextIdx;
       layers[idx].classList.add('is-active');
+      // 旧動画はフェードアウト完了後に停止（currentTime は startTime にリセット＝次サイクル開始時の準備）
+      setTimeout(function () {
+        var prev = layers[prevIdx].querySelector('video');
+        if (prev) {
+          var st = (cities[prevIdx] && cities[prevIdx].startTime) || 0;
+          try { prev.pause(); prev.currentTime = st; } catch (e) {}
+        }
+      }, CROSSFADE_MS);
     }
 
     function goToCity(i) {
@@ -620,14 +625,20 @@
     if (!prefersReduce) {
       exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
 
-      // CITY_DURATION ごとに切替（事前 warmup は廃止：iOS の複数 video 同時再生制限を回避）
+      // ウォームアップ → 切替 のペアでサイクルを回す
       var cycleTimer = null;
       function scheduleNext() {
+        // CITY_DURATION - WARMUP_MS で次動画を事前再生
+        var warmupAt = CITY_DURATION - WARMUP_MS;
         cycleTimer = setTimeout(function () {
           var nextIdx = (idx + 1) % cities.length;
-          goToCity(nextIdx);
-          scheduleNext();
-        }, CITY_DURATION);
+          warmupLayer(nextIdx);
+          // WARMUP_MS 後に実際の切替（クロスフェード開始）
+          setTimeout(function () {
+            goToCity(nextIdx);
+            scheduleNext();
+          }, WARMUP_MS);
+        }, warmupAt);
       }
       scheduleNext();
     }
