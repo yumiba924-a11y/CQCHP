@@ -344,11 +344,11 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 1024px) {
-  .hero { height: 45vh; min-height: 340px; padding-block: 0; }
+  .hero { height: 55vh; min-height: 420px; padding-block: 0; }
 }
 
 @media (max-width: 768px) {
-  .hero { height: 38vh; min-height: 300px; padding-block: 0; }
+  .hero { height: 50vh; min-height: 400px; padding-block: 0; }
 }
 
 /* Houlihan-style full-bleed media layer */
