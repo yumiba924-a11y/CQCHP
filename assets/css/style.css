@@ -904,6 +904,8 @@ ul, ol { list-style: none; }
   .gap-network .eyebrow,
   .gap-network__eyebrow { font-size: 0.875rem; }   /* 14px */
   .gap-network .section-header h2 { font-size: 1.5rem; }  /* 24px */
+  .gap-network .gap-network__lead,
+  .gap-network p.gap-network__lead { font-size: 0.875rem; }  /* 14px (元 ≒19.4px) */
 }
 
 .gap-network__eyebrow,
