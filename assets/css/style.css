@@ -797,12 +797,12 @@ ul, ol { list-style: none; }
 .gap-network__eyebrow,
 .gap-network .eyebrow,
 .page-hero__eyebrow {
-  font-size: var(--fs-title);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
 }
 
 .section-header h2 {
   font-family: var(--font-mincho);
-  font-size: var(--fs-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
   font-weight: 500;
   line-height: var(--lh-display);
   letter-spacing: -0.015em;
@@ -1291,7 +1291,7 @@ ul, ol { list-style: none; }
 
 .chairman__pull {
   font-family: var(--font-mincho);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);  /* 24-36px、全画面1行表示 */
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);  /* 20-30px */
   font-weight: 500;
   line-height: 1.55;
   letter-spacing: -0.005em;
