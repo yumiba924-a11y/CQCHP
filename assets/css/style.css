@@ -1291,7 +1291,7 @@ ul, ol { list-style: none; }
 
 .chairman__pull {
   font-family: var(--font-mincho);
-  font-size: clamp(1.25rem, 2.5vw, 1.875rem);  /* 20-30px */
+  font-size: clamp(1rem, 2.2vw, 1.5rem);  /* 16-24px (モバイル/タブレット用) */
   font-weight: 500;
   line-height: 1.55;
   letter-spacing: -0.005em;
