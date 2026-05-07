@@ -3992,8 +3992,8 @@ ul, ol { list-style: none; }
   /* Chairman/President photo decorative ::before をシンプルに */
   .chairman__photo-frame::before,
   .president__photo-frame::before { inset: -8px -8px 8px 8px; }
-  .chairman__pull,
   .president__pull { font-size: 1.875rem; line-height: 1.5; }
+  /* .chairman__pull は base 値 (clamp 0.5-0.75rem) を効かせるため上書きしない */
   .chairman__sub,
   .president__sub { font-size: 1.0625rem; line-height: 1.8; margin-bottom: 32px; }
   .chairman__body p,
