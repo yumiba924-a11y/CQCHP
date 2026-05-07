@@ -1340,7 +1340,7 @@ ul, ol { list-style: none; }
 
 .chairman__photo {
   /* pull quote (30-45px) + line-height 1.55 + margin-bottom 32px ぶん下げて本文上端と揃える */
-  margin: clamp(80px, 6.5vw, 105px) 0 0;
+  margin: clamp(100px, 7vw, 125px) 0 0;
   align-self: start;
 }
 
