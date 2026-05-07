@@ -1281,6 +1281,11 @@ ul, ol { list-style: none; }
   background: var(--c-bg);
 }
 
+/* Chairman セクションだけ section-header と本文の間を詰める */
+.chairman .section-header {
+  margin-bottom: 32px;
+}
+
 .chairman__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
