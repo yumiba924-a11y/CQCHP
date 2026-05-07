@@ -658,7 +658,6 @@ ul, ol { list-style: none; }
   .hero__city-dot.is-active { width: 36px; border-radius: 4px; }
   .hero__city-label { margin-left: 20px; font-size: clamp(13px, 1vw, 15px); letter-spacing: 0.24em; }
 
-  .chairman__pull   { font-size: clamp(2.5rem, 4.5vw, 3.75rem); /* 40-60px (≒60px) */ }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1297,6 +1296,10 @@ ul, ol { list-style: none; }
   letter-spacing: -0.005em;
   color: var(--c-ink);
   margin: 0 0 32px;
+}
+
+@media (min-width: 1025px) {
+  .chairman__pull { font-size: clamp(2.5rem, 4.5vw, 3.75rem); /* 40-60px (≒60px) */ }
 }
 
 .chairman__sub {
