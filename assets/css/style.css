@@ -1313,7 +1313,7 @@ ul, ol { list-style: none; }
 }
 
 @media (min-width: 1025px) {
-  .chairman__pull { font-size: clamp(1.875rem, 3.2vw, 2.8125rem); /* 30-45px (≒45px) */ }
+  .chairman__pull { font-size: clamp(1.875rem, 3.2vw, 2.8125rem); white-space: nowrap; /* 30-45px (≒45px)、PC は 1 行強制 */ }
 }
 
 .chairman__sub {
