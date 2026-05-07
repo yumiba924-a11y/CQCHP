@@ -572,7 +572,7 @@ ul, ol { list-style: none; }
 }
 /* === 黒帯：よりゆっくり優雅に展開 === */
 .hero__telop-bar.is-enter {
-  animation: cqcHeroBarEnter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+  animation: cqcHeroBarEnter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
 }
 .hero__telop-bar.is-exit {
   transform-origin: left center;
@@ -620,8 +620,8 @@ ul, ol { list-style: none; }
 }
 
 /* 入場：和文先 → 英文 のスタガード演出。ease-out-expo 風で柔らかく着地 */
-.hero__telop.is-enter .hero__telop-jp   { animation: cqcHeroTextEnter 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards; }
-.hero__telop.is-enter .hero__telop-en   { animation: cqcHeroTextEnter 1.6s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards; }
+.hero__telop.is-enter .hero__telop-jp   { animation: cqcHeroTextEnter 1.6s cubic-bezier(0.16, 1, 0.3, 1) 2.3s forwards; }
+.hero__telop.is-enter .hero__telop-en   { animation: cqcHeroTextEnter 1.6s cubic-bezier(0.16, 1, 0.3, 1) 2.9s forwards; }
 
 /* 退場：シンプルにopacity + 微かなtranslateY、ease-out で長い余韻 */
 .hero__telop.is-exit .hero__telop-jp,
