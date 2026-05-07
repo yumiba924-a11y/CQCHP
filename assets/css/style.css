@@ -2125,6 +2125,11 @@ ul, ol { list-style: none; }
   max-height: 60px;
   max-width: 130px;
 }
+/* track-grid 内でも BridgePoint だけは 2 倍 */
+.track-grid .tx-card__logo--dual .tx-card__logo-img[src*="bridgepoint"] {
+  max-height: 140px;
+  max-width: 140px;
+}
 .track-grid .tx-card__logo-mark {
   font-size: 0.875rem;
   padding: 12px 18px;
