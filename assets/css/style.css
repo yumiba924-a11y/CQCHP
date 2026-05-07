@@ -2589,6 +2589,9 @@ ul, ol { list-style: none; }
   color: var(--c-ink);
   display: block;
 }
+@media (max-width: 1024px) {
+  .group-card__name { font-size: 0.875rem; }  /* 14px (元 20px) */
+}
 .group-card__role {
   display: block;
   font-family: var(--font-sans-en);
