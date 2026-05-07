@@ -2056,7 +2056,7 @@ ul, ol { list-style: none; }
 }
 .track-tab {
   font-family: var(--font-sans-en);
-  font-size: 1rem;
+  font-size: 1.3125rem;  /* 21px (元 16px) */
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-ink-muted);
@@ -2072,7 +2072,7 @@ ul, ol { list-style: none; }
 .track-tab__count {
   font-family: var(--font-serif-en);
   font-style: italic;
-  font-size: 0.9375rem;
+  font-size: 1.25rem;  /* 20px (元 15px) */
   margin-left: 10px;
   color: var(--c-ink-faint);
 }
