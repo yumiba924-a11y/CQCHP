@@ -2703,7 +2703,7 @@ ul, ol { list-style: none; }
   margin: 0 0 14px;
 }
 @media (max-width: 1024px) {
-  .site-support__line { font-size: 0.875rem; line-height: 1.65; }  /* 14px (元 28px) */
+  .site-support__line { font-size: 0.8125rem; line-height: 1.65; }  /* 13px (元 28px) */
   .site-support__line .br-mobile { display: inline; }
 }
 .site-support__line .br-mobile { display: none; }  /* PC では改行しない */
