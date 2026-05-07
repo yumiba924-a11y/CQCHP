@@ -1299,7 +1299,7 @@ ul, ol { list-style: none; }
 }
 
 @media (min-width: 1025px) {
-  .chairman__pull { font-size: clamp(2.25rem, 4vw, 3.4375rem); /* 36-55px (≒55px) */ }
+  .chairman__pull { font-size: clamp(2rem, 3.6vw, 3.125rem); /* 32-50px (≒50px) */ }
 }
 
 .chairman__sub {
