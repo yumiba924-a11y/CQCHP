@@ -334,17 +334,14 @@ ul, ol { list-style: none; }
    ----------------------------------------------------- */
 .hero {
   position: relative;
-  padding-block: clamp(96px, 14vh, 180px) clamp(80px, 12vh, 140px);
-  min-height: 100vh;
+  padding-block: 0;
+  height: 38vh;
+  min-height: 300px;
   display: flex;
   align-items: center;
   background: #0a0a0a;
   overflow: hidden;
   text-align: center;
-}
-
-@media (max-width: 1024px) {
-  .hero { height: 45vh; min-height: 340px; padding-block: 0; }
 }
 
 /* Houlihan-style full-bleed media layer */
@@ -516,8 +513,8 @@ ul, ol { list-style: none; }
 /* City indicator (top-right) */
 .hero__cities {
   position: absolute;
-  top: clamp(20px, 3vh, 36px);
-  right: clamp(20px, 3vw, 40px);
+  top: 12px;
+  right: 12px;
   z-index: 4;
   display: flex;
   align-items: center;
@@ -545,19 +542,21 @@ ul, ol { list-style: none; }
   text-transform: uppercase;
 }
 
-/* Telop block (bottom-left on PC; mobile re-centers vertically via @media) */
+/* Telop block (vertically centered, full-width with side margins — unified PC + mobile) */
 .hero__telop {
   position: absolute;
   z-index: 3;
-  bottom: clamp(48px, 8vh, 100px);
-  left: clamp(24px, 6vw, 80px);
-  max-width: 720px;
+  top: 50%;
+  left: 16px;
+  right: 16px;
+  transform: translateY(-50%);
+  max-width: none;
   pointer-events: none;
 }
 .hero__telop-bar {
   position: relative;
   overflow: hidden;
-  padding: clamp(20px, 2.6vw, 32px) clamp(24px, 3vw, 40px);
+  padding: 12px 14px;
   background: rgba(0,0,0,0.78);
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
@@ -579,13 +578,13 @@ ul, ol { list-style: none; }
 /* === 文字：opacity + slide + blur のレイヤード演出 === */
 .hero__telop-jp {
   font-family: var(--font-mincho);
-  font-size: clamp(20px, 3.2vw, 44px);
+  font-size: clamp(16px, 4.4vw, 22px);
   font-weight: 400;
   color: #F5F1E8;
   letter-spacing: 0.08em;
   line-height: 1.4;
-  margin-bottom: 14px;
-  white-space: nowrap;
+  margin-bottom: 8px;
+  white-space: normal;
   opacity: 0;
   transform: translateY(24px);
   filter: blur(10px);
@@ -593,10 +592,10 @@ ul, ol { list-style: none; }
 }
 .hero__telop-en {
   font-family: var(--font-sans-en);
-  font-size: clamp(13px, 1.3vw, 16px);
+  font-size: 10px;
   font-weight: 500;
   color: rgba(245,241,232,0.72);
-  letter-spacing: 0.32em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   opacity: 0;
   transform: translateY(20px);
@@ -637,14 +636,6 @@ ul, ol { list-style: none; }
   }
 }
 
-@media (max-width: 768px) {
-  .hero { height: 38vh; min-height: 300px; padding-block: 0; }
-  .hero__telop      { top: 50%; bottom: auto; left: 16px; right: 16px; transform: translateY(-50%); max-width: none; }
-  .hero__telop-bar  { padding: 12px 14px; }
-  .hero__telop-jp   { white-space: normal; font-size: clamp(16px, 4.4vw, 22px); margin-bottom: 8px; }
-  .hero__telop-en   { font-size: 10px; letter-spacing: 0.24em; }
-  .hero__cities     { top: 12px; right: 12px; }
-}
 @media (max-width: 480px) {
   .hero__telop-jp   { font-size: clamp(15px, 4.8vw, 20px); }
 }
