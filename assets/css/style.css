@@ -564,6 +564,8 @@ ul, ol { list-style: none; }
   position: relative;
   overflow: hidden;
   padding: 12px 14px;
+  width: max-content;
+  max-width: 100%;
   background: rgba(0,0,0,0.78);
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
