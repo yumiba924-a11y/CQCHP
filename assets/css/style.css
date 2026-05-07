@@ -334,9 +334,8 @@ ul, ol { list-style: none; }
    ----------------------------------------------------- */
 .hero {
   position: relative;
-  padding-block: 0;
-  height: 80vh;
-  min-height: 560px;
+  padding-block: clamp(96px, 14vh, 180px) clamp(80px, 12vh, 140px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   background: #0a0a0a;
@@ -345,7 +344,7 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 1024px) {
-  .hero { height: 72vh; min-height: 480px; }
+  .hero { height: 45vh; min-height: 340px; padding-block: 0; }
 }
 
 /* Houlihan-style full-bleed media layer */
@@ -640,7 +639,7 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 768px) {
-  .hero { height: 78vh; min-height: 480px; padding-block: 0; }
+  .hero { height: 38vh; min-height: 300px; padding-block: 0; }
   .hero__telop      { left: 16px; right: 16px; max-width: none; }
   .hero__telop-bar  { padding: 12px 14px; }
   .hero__telop-jp   { white-space: normal; font-size: clamp(16px, 4.4vw, 22px); margin-bottom: 8px; }
