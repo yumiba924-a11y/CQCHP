@@ -334,14 +334,21 @@ ul, ol { list-style: none; }
    ----------------------------------------------------- */
 .hero {
   position: relative;
-  padding-block: 0;
-  height: 38vh;
-  min-height: 300px;
+  padding-block: clamp(96px, 14vh, 180px) clamp(80px, 12vh, 140px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   background: #0a0a0a;
   overflow: hidden;
   text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .hero { height: 45vh; min-height: 340px; padding-block: 0; }
+}
+
+@media (max-width: 768px) {
+  .hero { height: 38vh; min-height: 300px; padding-block: 0; }
 }
 
 /* Houlihan-style full-bleed media layer */
