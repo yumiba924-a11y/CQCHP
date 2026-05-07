@@ -2035,7 +2035,7 @@ ul, ol { list-style: none; }
 }
 .track-stats__label {
   font-family: var(--font-sans-en);
-  font-size: 0.875rem;
+  font-size: 1.25rem;  /* 20px (元 14px) */
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-ink-muted);
