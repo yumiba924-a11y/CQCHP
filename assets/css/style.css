@@ -658,7 +658,7 @@ ul, ol { list-style: none; }
   .hero__city-dot.is-active { width: 36px; border-radius: 4px; }
   .hero__city-label { margin-left: 20px; font-size: clamp(13px, 1vw, 15px); letter-spacing: 0.24em; }
 
-  .chairman__pull   { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+  .chairman__pull   { font-size: clamp(2rem, 3.5vw, 2.875rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1291,7 +1291,7 @@ ul, ol { list-style: none; }
 
 .chairman__pull {
   font-family: var(--font-mincho);
-  font-size: clamp(1rem, 2.2vw, 1.5rem);  /* 16-24px (モバイル/タブレット用) */
+  font-size: clamp(0.875rem, 2vw, 1.25rem);  /* 14-20px (モバイル/タブレット用) */
   font-weight: 500;
   line-height: 1.55;
   letter-spacing: -0.005em;
