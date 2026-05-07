@@ -2704,7 +2704,9 @@ ul, ol { list-style: none; }
 }
 @media (max-width: 1024px) {
   .site-support__line { font-size: 0.9375rem; line-height: 1.65; }  /* 15px (元 28px) */
+  .site-support__line .br-mobile { display: inline; }
 }
+.site-support__line .br-mobile { display: none; }  /* PC では改行しない */
 .site-support__line a {
   color: var(--c-ink);
   text-decoration: none;
