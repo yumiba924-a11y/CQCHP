@@ -292,6 +292,15 @@ ul, ol { list-style: none; }
 }
 .site-nav__lang a:hover { color: var(--c-ink); }
 
+/* モバイル/タブレットだけ言語トグルを縮小 + 間隔詰め */
+@media (max-width: 1024px) {
+  .site-nav__lang {
+    font-size: 0.8125rem;  /* 13px */
+    gap: 4px;
+    letter-spacing: 0.06em;
+  }
+}
+
 /* ---- Hamburger toggle (mobile only) ---- */
 .site-nav-toggle {
   display: none;
