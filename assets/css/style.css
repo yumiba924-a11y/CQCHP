@@ -659,6 +659,10 @@ ul, ol { list-style: none; }
   .hero__telop-jp   { font-size: clamp(65px, 8.28vw, 115px); margin-bottom: 18px; white-space: nowrap; }
   .hero__telop-en   { font-size: clamp(28px, 2.8vw, 36px); letter-spacing: 0.32em; }
 
+  /* 英語ページは jp 位置に長めの英語タイトルが入るため縮小 */
+  [lang="en"] .hero__telop-jp { font-size: clamp(40px, 5vw, 64px); letter-spacing: 0.02em; }
+}
+
   .hero__cities     { top: clamp(24px, 3vh, 40px); right: clamp(24px, 3vw, 44px); gap: 12px; }
   .hero__city-dot   { width: 9px; height: 9px; }
   .hero__city-dot.is-active { width: 36px; border-radius: 4px; }
