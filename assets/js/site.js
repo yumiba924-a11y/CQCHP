@@ -1,3 +1,27 @@
+/* CQC site-wide JS — header scroll state */
+(function () {
+  var header = document.querySelector('.site-header');
+  if (!header) return;
+
+  var SCROLL_THRESHOLD = 60;  // ヒーロー透過 → 白背景 切替閾値（px）
+  var ticking = false;
+
+  function update() {
+    var scrolled = window.scrollY > SCROLL_THRESHOLD;
+    header.classList.toggle('is-scrolled', scrolled);
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  update();  // 初期化
+})();
+
 /* CQC site-wide JS — hamburger nav toggle */
 (function () {
   var toggle = document.querySelector('.site-nav-toggle');
