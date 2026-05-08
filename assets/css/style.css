@@ -278,9 +278,9 @@ ul, ol { list-style: none; }
 .site-nav__lang {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   font-family: var(--font-sans-en);
-  font-size: 0.75rem;
+  font-size: 1.5rem;  /* 24px (元 12px、2 倍) */
   letter-spacing: 0.15em;
 }
 .site-nav__lang span { color: var(--c-ink-faint); }
