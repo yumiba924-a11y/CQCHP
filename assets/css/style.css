@@ -285,6 +285,12 @@ ul, ol { list-style: none; }
 }
 .site-nav__lang span { color: var(--c-ink-faint); }
 .site-nav__lang .is-active { color: var(--c-forest); font-weight: 600; }
+.site-nav__lang a {
+  color: var(--c-ink-faint);
+  text-decoration: none;
+  transition: color var(--duration) var(--ease);
+}
+.site-nav__lang a:hover { color: var(--c-ink); }
 
 /* ---- Hamburger toggle (mobile only) ---- */
 .site-nav-toggle {
