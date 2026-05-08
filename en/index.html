@@ -6,7 +6,7 @@
   <title>Capital Quest Corporation, Ltd. | Independent M&A Advisory</title>
   <meta name="description" content="Independent M&A advisory. As a member of Capital Financial Holdings (CFH) Group, we provide cross-border M&A advisory through Global Alliance Partners (GAP), a network of independent investment banks across 20+ countries.">
   <link rel="canonical" href="https://capital-qc.co.jp/en/">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260509l">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260509m">
 </head>
 <body>
 
@@ -73,6 +73,20 @@
     </div>
 
     <div class="hero__telop" id="hero-telop" aria-live="polite"></div>
+
+    <!-- Hero controls (PC only) — Prev / Pause / Next -->
+    <div class="hero__controls" aria-label="Hero controls">
+      <button type="button" class="hero__ctrl hero__ctrl--prev" aria-label="Previous scene">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 6 L9 12 L15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="hero__ctrl hero__ctrl--toggle" aria-label="Pause" aria-pressed="false">
+        <svg class="hero__ctrl-icon hero__ctrl-icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="6" width="3" height="12" fill="currentColor"/><rect x="14" y="6" width="3" height="12" fill="currentColor"/></svg>
+        <svg class="hero__ctrl-icon hero__ctrl-icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5 L19 12 L8 19 Z" fill="currentColor"/></svg>
+      </button>
+      <button type="button" class="hero__ctrl hero__ctrl--next" aria-label="Next scene">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6 L15 12 L9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
 
   </section>
 
@@ -544,32 +558,85 @@
       }, CROSSFADE_MS);
     }
 
+    var isPaused = false;
+
     function goToCity(i) {
-      if (exitTimer) clearTimeout(exitTimer);
+      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
       activateLayer(i);
       renderTelop(i);
       updateIndicator(i);
-      exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
+      if (!isPaused) {
+        exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
+      }
     }
 
     renderTelop(0);
     updateIndicator(0);
 
-    if (!prefersReduce) {
-      exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
-      var cycleTimer = null;
-      function scheduleNext() {
-        var warmupAt = CITY_DURATION - WARMUP_MS;
-        cycleTimer = setTimeout(function () {
-          var nextIdx = (idx + 1) % cities.length;
-          warmupLayer(nextIdx);
-          setTimeout(function () {
-            goToCity(nextIdx);
-            scheduleNext();
-          }, WARMUP_MS);
-        }, warmupAt);
-      }
+    var cycleTimers = [];
+    function clearCycle() {
+      cycleTimers.forEach(function (t) { clearTimeout(t); });
+      cycleTimers = [];
+      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
+    }
+    function scheduleNext() {
+      var warmupAt = CITY_DURATION - WARMUP_MS;
+      var t1 = setTimeout(function () {
+        var nextIdx = (idx + 1) % cities.length;
+        warmupLayer(nextIdx);
+        var t2 = setTimeout(function () {
+          goToCity(nextIdx);
+          if (!isPaused) scheduleNext();
+        }, WARMUP_MS);
+        cycleTimers.push(t2);
+      }, warmupAt);
+      cycleTimers.push(t1);
+    }
+    function startCycle() {
+      isPaused = false;
+      if (!exitTimer) exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
       scheduleNext();
+    }
+
+    var prevBtn   = document.querySelector('.hero__ctrl--prev');
+    var nextBtn   = document.querySelector('.hero__ctrl--next');
+    var toggleBtn = document.querySelector('.hero__ctrl--toggle');
+
+    function pauseHero() {
+      isPaused = true;
+      clearCycle();
+      var v = layers[idx].querySelector('video');
+      if (v) { try { v.pause(); } catch (e) {} }
+      if (toggleBtn) {
+        toggleBtn.classList.add('is-paused');
+        toggleBtn.setAttribute('aria-pressed', 'true');
+        toggleBtn.setAttribute('aria-label', 'Play');
+      }
+    }
+    function playHero() {
+      var v = layers[idx].querySelector('video');
+      if (v) { try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {} }
+      startCycle();
+      if (toggleBtn) {
+        toggleBtn.classList.remove('is-paused');
+        toggleBtn.setAttribute('aria-pressed', 'false');
+        toggleBtn.setAttribute('aria-label', 'Pause');
+      }
+    }
+    function jumpTo(i) {
+      var wasPaused = isPaused;
+      clearCycle();
+      warmupLayer(i);
+      goToCity(i);
+      if (!wasPaused) startCycle();
+    }
+
+    if (prevBtn)   prevBtn.addEventListener('click', function () { jumpTo((idx - 1 + cities.length) % cities.length); });
+    if (nextBtn)   nextBtn.addEventListener('click', function () { jumpTo((idx + 1) % cities.length); });
+    if (toggleBtn) toggleBtn.addEventListener('click', function () { if (isPaused) playHero(); else pauseHero(); });
+
+    if (!prefersReduce) {
+      startCycle();
     }
   }
 })();

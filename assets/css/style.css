@@ -679,6 +679,54 @@ ul, ol { list-style: none; }
 
 }
 
+/* Hero controls (PC only) — 前 / 一時停止 / 次 */
+.hero__controls { display: none; }
+@media (min-width: 1025px) {
+  .hero__controls {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    z-index: 5;
+    display: flex;
+    gap: 10px;
+    pointer-events: auto;
+  }
+  .hero__ctrl {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.55);
+    background: rgba(0,0,0,0.28);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+    transition: background var(--duration) var(--ease),
+                border-color var(--duration) var(--ease),
+                transform var(--duration) var(--ease);
+  }
+  .hero__ctrl:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.9);
+  }
+  .hero__ctrl:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  .hero__ctrl svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+  .hero__ctrl-icon--play { display: none; }
+  .hero__ctrl--toggle.is-paused .hero__ctrl-icon--pause { display: none; }
+  .hero__ctrl--toggle.is-paused .hero__ctrl-icon--play  { display: block; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero__telop-bar  { transform: scaleX(1); animation: none !important; }
   .hero__telop-jp,
