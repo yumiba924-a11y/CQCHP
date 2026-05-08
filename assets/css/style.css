@@ -2047,9 +2047,9 @@ ul, ol { list-style: none; }
   margin-top: 16px;
 }
 
-/* Stats Banner 直下の注記 */
-.track-stats__note {
-  margin-top: 32px;
+/* 過去実績ページ末尾の注記（カード一覧の下） */
+.track-record__note {
+  margin-top: 48px;
   text-align: center;
   font-size: 0.8125rem;
   color: var(--c-ink-faint);
