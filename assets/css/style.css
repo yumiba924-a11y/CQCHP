@@ -1788,7 +1788,7 @@ ul, ol { list-style: none; }
 }
 
 .tx-card__logo {
-  height: 56px;
+  height: 140px;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -1824,13 +1824,6 @@ ul, ol { list-style: none; }
 .tx-card__logo--dual .tx-card__logo-img[src*="bridgepoint"] {
   max-height: 140px;
   max-width: 140px;
-}
-
-/* BridgePoint ロゴだけ大きく上に張り出して緑バンドにかぶるため、
-   そのカードのロゴコンテナ高さを 140px に拡張 */
-.tx-card__logo:has(.tx-card__logo-img[src*="bridgepoint"]),
-.track-grid .tx-card__logo:has(.tx-card__logo-img[src*="bridgepoint"]) {
-  height: 140px;
 }
 
 /* FUNAI は白ロゴのため白背景で消える → invert で黒に反転 */
@@ -2223,7 +2216,7 @@ ul, ol { list-style: none; }
   margin-bottom: 32px;
 }
 .track-grid .tx-card__logo {
-  height: 72px;
+  height: 140px;
   margin-bottom: 28px;
 }
 .track-grid .tx-card__logo-img {
