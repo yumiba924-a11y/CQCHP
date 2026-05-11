@@ -1765,7 +1765,11 @@ ul, ol { list-style: none; }
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-  margin-bottom: 32px;
+  /* FB5-b: 上ヘッダーに深緑薄背景バンド */
+  background: rgba(0, 73, 44, 0.08);
+  margin: -28px -28px 24px;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(0, 73, 44, 0.15);
   font-family: var(--font-sans-en);
   font-size: 1.4375rem;  /* 23px (元 13px) */
   letter-spacing: 0.12em;
@@ -1778,7 +1782,8 @@ ul, ol { list-style: none; }
 }
 
 .tx-card__type {
-  color: var(--c-ink-faint);
+  color: var(--c-forest);
+  opacity: 0.75;
   font-weight: 500;
 }
 
@@ -1787,6 +1792,7 @@ ul, ol { list-style: none; }
   margin-bottom: 24px;
   display: flex;
   align-items: center;
+  justify-content: center;
   justify-content: flex-start;
   gap: 16px;
 }
@@ -1839,6 +1845,7 @@ ul, ol { list-style: none; }
   font-size: 1.1875rem;
   line-height: 1.55;
   color: var(--c-ink);
+  text-align: center;
   margin: 0 0 16px;
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -1860,7 +1867,7 @@ ul, ol { list-style: none; }
   width: 32px;
   height: 1px;
   background: var(--c-gold);
-  margin: 0 0 28px;
+  margin: 0 auto 28px;
 }
 
 .tx-card__desc {
@@ -4146,95 +4153,3 @@ ul, ol { list-style: none; }
   .gap-stat__num { font-size: 2.5rem; }
 }
 
-/* ============================================================
-   PREVIEW: tx-card アクセント案（一時的、A/B/C比較用）
-   URL ?card=a / ?card=b / ?card=c で切替
-   ============================================================ */
-
-/* A案：テキスト色だけ深緑化 */
-html.card-a .tx-card__type { color: var(--c-forest); font-weight: 600; }
-html.card-a .tx-card__desc { color: var(--c-forest); }
-
-/* B案：上ヘッダーに深緑薄背景バンド */
-html.card-b .tx-card__head {
-  background: rgba(0, 73, 44, 0.08);
-  margin: -28px -28px 24px;
-  padding: 14px 28px;
-  border-bottom: 1px solid rgba(0, 73, 44, 0.15);
-}
-html.card-b .tx-card__region { color: var(--c-forest); }
-html.card-b .tx-card__type   { color: var(--c-forest); opacity: 0.75; }
-
-/* C案：両方ミックス（バンド + テキスト深緑） */
-html.card-c .tx-card__head {
-  background: rgba(0, 73, 44, 0.08);
-  margin: -28px -28px 24px;
-  padding: 14px 28px;
-  border-bottom: 1px solid rgba(0, 73, 44, 0.15);
-}
-html.card-c .tx-card__region { color: var(--c-forest); }
-html.card-c .tx-card__type   { color: var(--c-forest); opacity: 0.75; }
-html.card-c .tx-card__desc   { color: var(--c-forest); }
-
-/* D案：B + 中央揃え（ロゴ・タイトル・罫線） */
-html.card-d .tx-card__head {
-  background: rgba(0, 73, 44, 0.08);
-  margin: -28px -28px 24px;
-  padding: 14px 28px;
-  border-bottom: 1px solid rgba(0, 73, 44, 0.15);
-}
-html.card-d .tx-card__region { color: var(--c-forest); }
-html.card-d .tx-card__type   { color: var(--c-forest); opacity: 0.75; }
-html.card-d .tx-card__logo   { justify-content: center; }
-html.card-d .tx-card__title  { text-align: center; }
-html.card-d .tx-card__rule   { margin-left: auto; margin-right: auto; }
-
-/* E案：C + 中央揃え（バンド+深緑+中央揃え） */
-html.card-e .tx-card__head {
-  background: rgba(0, 73, 44, 0.08);
-  margin: -28px -28px 24px;
-  padding: 14px 28px;
-  border-bottom: 1px solid rgba(0, 73, 44, 0.15);
-}
-html.card-e .tx-card__region { color: var(--c-forest); }
-html.card-e .tx-card__type   { color: var(--c-forest); opacity: 0.75; }
-html.card-e .tx-card__desc   { color: var(--c-forest); }
-html.card-e .tx-card__logo   { justify-content: center; }
-html.card-e .tx-card__title  { text-align: center; }
-html.card-e .tx-card__rule   { margin-left: auto; margin-right: auto; }
-
-/* プレビュー切替パネル */
-.card-preview-toggle {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(0, 0, 0, 0.85);
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-}
-.card-preview-toggle__label {
-  color: #aaa;
-  margin-right: 4px;
-  font-weight: 600;
-}
-.card-preview-toggle__btn {
-  color: #ccc;
-  background: rgba(255, 255, 255, 0.12);
-  padding: 5px 11px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 12px;
-  transition: background 0.18s, color 0.18s;
-}
-.card-preview-toggle__btn:hover { background: rgba(255, 255, 255, 0.22); color: #fff; }
-.card-preview-toggle__btn.is-active { background: #fff; color: #000; }
