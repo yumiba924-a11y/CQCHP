@@ -6,20 +6,7 @@
   <title>キャピタル・クエスト株式会社 | Capital Quest Corporation, Ltd.</title>
   <meta name="description" content="独立系M&Aアドバイザリー。キャピタル フィナンシャルホールディングス（CFH）グループの一員として、20ヵ国超のグローバル・アライアンス（GAP）を通じてクロスボーダーM&Aアドバイザリーを提供する。">
   <link rel="canonical" href="https://capital-qc.co.jp/">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260511n">
-
-  <!-- Scroll motion preview: ?motion=subtle / moderate / aggressive -->
-  <script>
-    (function() {
-      try {
-        var p = new URLSearchParams(location.search);
-        var m = p.get('motion');
-        if (m && /^(subtle|moderate|aggressive)$/.test(m)) {
-          document.documentElement.classList.add('motion-' + m);
-        }
-      } catch (e) {}
-    })();
-  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=20260511o">
 </head>
 <body>
 
@@ -690,7 +677,7 @@
   }
 })();
 </script>
-<script src="assets/js/site.js?v=20260503b" defer></script>
+<script src="assets/js/site.js?v=20260511o" defer></script>
 
 <!-- ===========================================================
      FOOTER
@@ -755,67 +742,6 @@
     </div>
   </div>
 </footer>
-
-<!-- Scroll motion preview switcher (一時的) -->
-<div class="motion-preview-toggle" aria-label="モーションプレビュー切替">
-  <span class="motion-preview-toggle__label">MOTION</span>
-  <a href="?" class="motion-preview-toggle__btn" data-motion="">現状</a>
-  <a href="?motion=subtle" class="motion-preview-toggle__btn" data-motion="subtle">控えめ</a>
-  <a href="?motion=moderate" class="motion-preview-toggle__btn" data-motion="moderate">普通</a>
-  <a href="?motion=aggressive" class="motion-preview-toggle__btn" data-motion="aggressive">派手</a>
-</div>
-<script>
-  (function() {
-    // 切替パネルのアクティブ表示
-    var p = new URLSearchParams(location.search);
-    var m = p.get('motion') || '';
-    document.querySelectorAll('.motion-preview-toggle__btn').forEach(function(b) {
-      if (b.getAttribute('data-motion') === m) b.classList.add('is-active');
-    });
-
-    // motion有効時のみ IntersectionObserver で is-revealed を付与
-    if (!document.documentElement.className.match(/motion-(subtle|moderate|aggressive)/)) return;
-    if (!('IntersectionObserver' in window)) return;
-
-    // 監視対象セレクタ（ヒーローと過去実績カルーセルは除外）
-    var selectors = [
-      '.section-header',
-      '.chairman__pull',
-      '.chairman__body',
-      '.chairman__photo',
-      '.gap-network__h2',
-      '.gap-network__lead',
-      '.gap-network__map',
-      '.gap-network__cta',
-      '.transactions__cta',
-      '.track-record__note'
-    ];
-
-    var targets = document.querySelectorAll(selectors.join(','));
-    targets.forEach(function(t) { t.setAttribute('data-anim', ''); });
-
-    // 同一セクション内に複数要素がある場合、出現順に 0.1s ずつ stagger
-    // （Vietnam Weekly の reveal-delay-N 相当）
-    var sections = document.querySelectorAll('.section, .chairman, .transactions, .gap-network');
-    sections.forEach(function(sec) {
-      var inSection = sec.querySelectorAll('[data-anim]');
-      inSection.forEach(function(el, idx) {
-        if (idx > 0 && idx <= 4) el.setAttribute('data-anim-delay', String(idx));
-      });
-    });
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-
-    targets.forEach(function(t) { observer.observe(t); });
-  })();
-</script>
 
 </body>
 </html>
