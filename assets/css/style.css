@@ -665,14 +665,16 @@ ul, ol { list-style: none; }
 /* PC のみ大幅アップ（>1024px） */
 @media (min-width: 1025px) {
   .hero__telop-bar  {
-    padding: clamp(28px, 3.5vw, 48px) clamp(32px, 4vw, 56px);
+    /* FB1-b: 黒帯を縦に細く（縦padding大幅縮小） */
+    padding: clamp(16px, 1.8vw, 26px) clamp(32px, 4vw, 56px);
     width: max-content;
     max-width: 100%;
-    /* FB1-b: 黒帯薄め、FB1-c: 右にずらしバランスよく */
+    /* FB1-c: 右にずらしバランスよく */
     margin-left: clamp(48px, 5vw, 100px);
     background: rgba(0,0,0,0.55);
   }
-  .hero__telop-jp   { font-size: clamp(65px, 8.28vw, 115px); margin-bottom: 8px; white-space: nowrap; }
+  /* JP-EN 行間も詰めて全体を細身に */
+  .hero__telop-jp   { font-size: clamp(65px, 8.28vw, 115px); margin-bottom: 4px; white-space: nowrap; }
   .hero__telop-en   { font-size: clamp(28px, 2.8vw, 36px); letter-spacing: 0.32em; }
 
   /* 英語ページは jp 位置に長めの英語タイトルが入るため縮小 */
