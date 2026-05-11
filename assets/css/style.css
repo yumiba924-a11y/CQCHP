@@ -39,6 +39,10 @@
       "Helvetica Neue", Helvetica, Arial,
       "Liberation Sans", sans-serif;
 
+  /* タイトル用明朝 / 本文用明朝 — デフォルトは従来の var(--font-mincho) */
+  --font-mincho-title: var(--font-mincho);
+  --font-mincho-body:  var(--font-mincho);
+
   /* Type scale — 4 tiers only (Display / Title / Body / Caption)
      全画面で視認性と一貫性を確保。これ以外のサイズは原則使わない。 */
   --fs-display:  clamp(2.75rem, 5vw,   4.5rem);    /* T1 — Hero H1 only */
@@ -4129,4 +4133,154 @@ ul, ol { list-style: none; }
   /* GAP stats のギャップ縮小 */
   .gap-stats { gap: 28px; }
   .gap-stat__num { font-size: 2.5rem; }
+}
+
+/* ============================================================
+   FONT PREVIEW (HOME only) — html.font-a / .font-b / .font-c
+   ============================================================ */
+
+/* 案A：保守王道 — Noto Serif JP のみ（太さで title/body 差別化） */
+html.font-a {
+  --font-mincho:       "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mincho-title: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mincho-body:  "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-serif-en:     "EB Garamond", "Hiragino Mincho ProN", serif;
+}
+
+/* 案B：上品さアップ — Shippori Mincho B1 (title) × Noto Serif JP (body) */
+html.font-b {
+  --font-mincho:       "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mincho-title: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mincho-body:  "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-serif-en:     "Cormorant Garamond", "Hiragino Mincho ProN", serif;
+}
+
+/* 案C：モダン高級 — Zen Old Mincho (title) × BIZ UDP Mincho (body) */
+html.font-c {
+  --font-mincho:       "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mincho-title: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mincho-body:  "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-serif-en:     "Playfair Display", "Hiragino Mincho ProN", serif;
+}
+
+/* タイトル系セレクタは --font-mincho-title を使う（プレビュー時のみ効く） */
+html.font-a .section-header h2,
+html.font-a .gap-network__h2,
+html.font-a .chairman__pull,
+html.font-a .president__pull,
+html.font-a .tx-card__title,
+html.font-a .pillar-card__title,
+html.font-a .person-card__name,
+html.font-a .page-hero h1,
+html.font-a .hero__telop-jp,
+html.font-a .case-card__title,
+html.font-a .leader-mini__name,
+html.font-a .services-cta-section__title,
+html.font-a .group-diagram__node-name,
+html.font-a .chairman__sign-name,
+html.font-a .president__sign-name,
+html.font-a .message-body__name,
+html.font-b .section-header h2,
+html.font-b .gap-network__h2,
+html.font-b .chairman__pull,
+html.font-b .president__pull,
+html.font-b .tx-card__title,
+html.font-b .pillar-card__title,
+html.font-b .person-card__name,
+html.font-b .page-hero h1,
+html.font-b .hero__telop-jp,
+html.font-b .case-card__title,
+html.font-b .leader-mini__name,
+html.font-b .services-cta-section__title,
+html.font-b .group-diagram__node-name,
+html.font-b .chairman__sign-name,
+html.font-b .president__sign-name,
+html.font-b .message-body__name,
+html.font-c .section-header h2,
+html.font-c .gap-network__h2,
+html.font-c .chairman__pull,
+html.font-c .president__pull,
+html.font-c .tx-card__title,
+html.font-c .pillar-card__title,
+html.font-c .person-card__name,
+html.font-c .page-hero h1,
+html.font-c .hero__telop-jp,
+html.font-c .case-card__title,
+html.font-c .leader-mini__name,
+html.font-c .services-cta-section__title,
+html.font-c .group-diagram__node-name,
+html.font-c .chairman__sign-name,
+html.font-c .president__sign-name,
+html.font-c .message-body__name {
+  font-family: var(--font-mincho-title);
+}
+
+/* 本文系セレクタ：現状ゴシックだが、プレビュー時は明朝 body フォントに切替 */
+html.font-a .chairman__body p,
+html.font-a .president__body p,
+html.font-a .gap-network__lead,
+html.font-a .tx-card__desc,
+html.font-b .chairman__body p,
+html.font-b .president__body p,
+html.font-b .gap-network__lead,
+html.font-b .tx-card__desc,
+html.font-c .chairman__body p,
+html.font-c .president__body p,
+html.font-c .gap-network__lead,
+html.font-c .tx-card__desc {
+  font-family: var(--font-mincho-body);
+}
+
+/* 英文セリフ系：プレビュー時のみ webフォントへ */
+html.font-a .person-card__name-en,
+html.font-a .pillar-card__title-en,
+html.font-b .person-card__name-en,
+html.font-b .pillar-card__title-en,
+html.font-c .person-card__name-en,
+html.font-c .pillar-card__title-en {
+  font-family: var(--font-serif-en);
+}
+
+/* ============================================================
+   Font preview switcher UI (fixed bottom-left)
+   ============================================================ */
+.font-preview-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.font-preview-toggle__label {
+  color: #aaa;
+  margin-right: 4px;
+  font-weight: 600;
+}
+.font-preview-toggle__btn {
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 5px 11px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  transition: background 0.18s, color 0.18s;
+}
+.font-preview-toggle__btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+.font-preview-toggle__btn.is-active {
+  background: #fff;
+  color: #000;
 }
