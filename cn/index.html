@@ -6,7 +6,7 @@
   <title>Capital Quest Corporation, Ltd. | 独立M&A咨询</title>
   <meta name="description" content="独立系M&A咨询公司。作为Capital Financial Holdings (CFH)集团成员,通过覆盖20+国家的Global Alliance Partners (GAP)网络提供跨境M&A咨询服务。">
   <link rel="canonical" href="https://capital-qc.co.jp/cn/">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260511p">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260511q">
 </head>
 <body>
 
@@ -430,31 +430,37 @@
 </main>
 
 <script>
+// ===== Track Record 轮播：复制卡片实现循环 =====
 (function () {
-  (function () {
-    var track = document.querySelector('.transactions__track');
-    if (!track) return;
-    var cards = track.querySelectorAll('.tx-card');
-    if (cards.length < 2) return;
-    cards.forEach(function (card) {
-      var clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      track.appendChild(clone);
-    });
-  })();
+  var track = document.querySelector('.transactions__track');
+  if (!track) return;
+  var cards = track.querySelectorAll('.tx-card');
+  if (cards.length < 2) return;
+  cards.forEach(function (card) {
+    var clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+})();
 
-  var layers     = document.querySelectorAll('.hero__media-layer');
-  var telop      = document.getElementById('hero-telop');
-  var cityLabel  = document.getElementById('hero-city-label');
-  var cityDots   = document.querySelectorAll('.hero__city-dot');
+// ===== Hero: TK → NY → HK → VN 切换 + 字幕 + 控制按钮 =====
+(function () {
+  var layers = document.querySelectorAll('.hero__media-layer');
+  if (layers.length < 2) return;
 
-  // CN site: keywordJp position holds the larger Mincho-style Chinese title;
-  // keywordEn position holds the smaller all-caps English tagline.
+  var telop     = document.getElementById('hero-telop');
+  var cityLabel = document.getElementById('hero-city-label');
+  var cityDots  = document.querySelectorAll('.hero__city-dot');
+  var prevBtn   = document.querySelector('.hero__ctrl--prev');
+  var nextBtn   = document.querySelector('.hero__ctrl--next');
+  var toggleBtn = document.querySelector('.hero__ctrl--toggle');
+
+  // keywordJp 位置放置较大的中文主标题；keywordEn 位置放置较小的英文副标题。
   var cities = [
-    { key:'tk', label:'TOKYO',     keywordEn:'INDEPENDENT',         keywordJp:'保持独立',           startTime: 0, playbackRate: 1 },
-    { key:'ny', label:'NEW YORK',  keywordEn:'TRACK RECORD',        keywordJp:'半世纪业绩',         startTime: 0, playbackRate: 1 },
-    { key:'hk', label:'HONG KONG', keywordEn:'CROSSBORDER NETWORK', keywordJp:'20+国家网络',        startTime: 0, playbackRate: 1 },
-    { key:'vn', label:'VIETNAM',   keywordEn:'THE NEXT FUTURE',     keywordJp:'连接高增长亚洲',     startTime: 0, playbackRate: 1, theme:'light' }
+    { label:'TOKYO',     keywordJp:'保持独立',           keywordEn:'INDEPENDENT' },
+    { label:'NEW YORK',  keywordJp:'半世纪业绩',         keywordEn:'TRACK RECORD' },
+    { label:'HONG KONG', keywordJp:'20+国家网络',        keywordEn:'CROSSBORDER NETWORK' },
+    { label:'VIETNAM',   keywordJp:'连接高增长亚洲',     keywordEn:'THE NEXT FUTURE', theme:'light' }
   ];
 
   var CITY_DURATION = 8500;
@@ -462,156 +468,138 @@
   var CROSSFADE_MS  = 2100;
   var WARMUP_MS     = 300;
 
-  if (layers.length > 1) {
-    var idx = 0;
-    var exitTimer = null;
+  var idx = 0;
+  var isPaused = false;
+  var exitTimer = null;
+  var cycleTimers = [];
 
-    var prefersReduce = false;
-    try { prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  layers.forEach(function (l, i) {
+    var v = l.querySelector('video');
+    if (!v) return;
+    if (i === 0) { v.play().catch(function(){}); }
+    else { v.pause(); v.currentTime = 0; }
+  });
 
-    layers.forEach(function (l, i) {
-      var v = l.querySelector('video');
-      if (!v) return;
-      var st = (cities[i] && cities[i].startTime) || 0;
-      var pr = (cities[i] && cities[i].playbackRate) || 1;
-      try { v.playbackRate = pr; } catch (e) {}
-      if (i === 0) { try { v.currentTime = st; v.play(); } catch (e) {} }
-      else         { try { v.pause(); v.currentTime = st; } catch (e) {} }
-    });
-
-    function renderTelop(i) {
-      if (!telop) return;
-      var c = cities[i];
-      telop.className = 'hero__telop is-enter' + (c.theme === 'light' ? ' is-light' : '');
-      telop.innerHTML =
-        '<div class="hero__telop-bar is-enter" id="hero-telop-bar">' +
-          '<div class="hero__telop-jp">' + c.keywordJp + '</div>' +
-          '<div class="hero__telop-en">' + c.keywordEn + '</div>' +
-        '</div>';
-    }
-
-    function triggerExit() {
-      if (!telop) return;
-      telop.classList.remove('is-enter');
-      telop.classList.add('is-exit');
-      var bar = document.getElementById('hero-telop-bar');
-      if (bar) {
-        bar.classList.remove('is-enter');
-        bar.classList.add('is-exit');
-      }
-    }
-
-    function updateIndicator(i) {
-      cityDots.forEach(function (d, j) { d.classList.toggle('is-active', j === i); });
-      if (cityLabel) cityLabel.textContent = cities[i].label;
-    }
-
-    function warmupLayer(i) {
-      var v = layers[i] && layers[i].querySelector('video');
-      if (!v) return;
-      var st = (cities[i] && cities[i].startTime) || 0;
-      var pr = (cities[i] && cities[i].playbackRate) || 1;
-      try { v.playbackRate = pr; v.currentTime = st; var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
-    }
-
-    function activateLayer(nextIdx) {
-      if (nextIdx === idx) return;
-      var prevIdx = idx;
-      var next = layers[nextIdx].querySelector('video');
-      if (next && next.paused) { try { next.play(); } catch (e) {} }
-      layers[prevIdx].classList.remove('is-active');
-      idx = nextIdx;
-      layers[idx].classList.add('is-active');
-      setTimeout(function () {
-        var prev = layers[prevIdx].querySelector('video');
-        if (prev) {
-          var st = (cities[prevIdx] && cities[prevIdx].startTime) || 0;
-          try { prev.pause(); prev.currentTime = st; } catch (e) {}
-        }
-      }, CROSSFADE_MS);
-    }
-
-    var isPaused = false;
-
-    function goToCity(i) {
-      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
-      activateLayer(i);
-      renderTelop(i);
-      updateIndicator(i);
-      if (!isPaused) {
-        exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
-      }
-    }
-
-    renderTelop(0);
-    updateIndicator(0);
-
-    var cycleTimers = [];
-    function clearCycle() {
-      cycleTimers.forEach(function (t) { clearTimeout(t); });
-      cycleTimers = [];
-      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
-    }
-    function scheduleNext() {
-      var warmupAt = CITY_DURATION - WARMUP_MS;
-      var t1 = setTimeout(function () {
-        var nextIdx = (idx + 1) % cities.length;
-        warmupLayer(nextIdx);
-        var t2 = setTimeout(function () {
-          goToCity(nextIdx);
-          if (!isPaused) scheduleNext();
-        }, WARMUP_MS);
-        cycleTimers.push(t2);
-      }, warmupAt);
-      cycleTimers.push(t1);
-    }
-    function startCycle() {
-      isPaused = false;
-      if (!exitTimer) exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
-      scheduleNext();
-    }
-
-    var prevBtn   = document.querySelector('.hero__ctrl--prev');
-    var nextBtn   = document.querySelector('.hero__ctrl--next');
-    var toggleBtn = document.querySelector('.hero__ctrl--toggle');
-
-    function pauseHero() {
-      isPaused = true;
-      clearCycle();
-      var v = layers[idx].querySelector('video');
-      if (v) { try { v.pause(); } catch (e) {} }
-      if (toggleBtn) {
-        toggleBtn.classList.add('is-paused');
-        toggleBtn.setAttribute('aria-pressed', 'true');
-        toggleBtn.setAttribute('aria-label', '播放');
-      }
-    }
-    function playHero() {
-      var v = layers[idx].querySelector('video');
-      if (v) { try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {} }
-      startCycle();
-      if (toggleBtn) {
-        toggleBtn.classList.remove('is-paused');
-        toggleBtn.setAttribute('aria-pressed', 'false');
-        toggleBtn.setAttribute('aria-label', '暂停');
-      }
-    }
-    function jumpTo(i) {
-      var wasPaused = isPaused;
-      clearCycle();
-      warmupLayer(i);
-      goToCity(i);
-      if (!wasPaused) startCycle();
-    }
-
-    if (prevBtn)   prevBtn.addEventListener('click', function () { jumpTo((idx - 1 + cities.length) % cities.length); });
-    if (nextBtn)   nextBtn.addEventListener('click', function () { jumpTo((idx + 1) % cities.length); });
-    if (toggleBtn) toggleBtn.addEventListener('click', function () { if (isPaused) playHero(); else pauseHero(); });
-
-    // 始终启动循环（不论 prefers-reduced-motion 设定）
-    // CSS @media (prefers-reduced-motion: reduce) 会单独抑制各元素的进入/退出动画。
-    startCycle();
+  function renderTelop(i) {
+    if (!telop) return;
+    var c = cities[i];
+    telop.className = 'hero__telop is-enter' + (c.theme === 'light' ? ' is-light' : '');
+    telop.innerHTML =
+      '<div class="hero__telop-bar is-enter" id="hero-telop-bar">' +
+        '<div class="hero__telop-jp">' + c.keywordJp + '</div>' +
+        '<div class="hero__telop-en">' + c.keywordEn + '</div>' +
+      '</div>';
   }
+
+  function triggerExit() {
+    if (!telop) return;
+    telop.classList.remove('is-enter');
+    telop.classList.add('is-exit');
+    var bar = document.getElementById('hero-telop-bar');
+    if (bar) {
+      bar.classList.remove('is-enter');
+      bar.classList.add('is-exit');
+    }
+  }
+
+  function updateIndicator(i) {
+    cityDots.forEach(function (d, j) { d.classList.toggle('is-active', j === i); });
+    if (cityLabel) cityLabel.textContent = cities[i].label;
+  }
+
+  function warmupLayer(i) {
+    var v = layers[i] && layers[i].querySelector('video');
+    if (!v) return;
+    v.currentTime = 0;
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){});
+  }
+
+  function activateLayer(nextIdx) {
+    if (nextIdx === idx) return;
+    var prevIdx = idx;
+    var next = layers[nextIdx].querySelector('video');
+    if (next && next.paused) next.play().catch(function(){});
+    layers[prevIdx].classList.remove('is-active');
+    idx = nextIdx;
+    layers[idx].classList.add('is-active');
+    setTimeout(function () {
+      var prev = layers[prevIdx].querySelector('video');
+      if (prev) { prev.pause(); prev.currentTime = 0; }
+    }, CROSSFADE_MS);
+  }
+
+  function goToCity(i) {
+    if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
+    activateLayer(i);
+    renderTelop(i);
+    updateIndicator(i);
+    if (!isPaused) exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
+  }
+
+  function clearCycle() {
+    cycleTimers.forEach(clearTimeout);
+    cycleTimers = [];
+    if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
+  }
+
+  function scheduleNext() {
+    var t1 = setTimeout(function () {
+      var nextIdx = (idx + 1) % cities.length;
+      warmupLayer(nextIdx);
+      var t2 = setTimeout(function () {
+        goToCity(nextIdx);
+        if (!isPaused) scheduleNext();
+      }, WARMUP_MS);
+      cycleTimers.push(t2);
+    }, CITY_DURATION - WARMUP_MS);
+    cycleTimers.push(t1);
+  }
+
+  function startCycle() {
+    isPaused = false;
+    if (!exitTimer) exitTimer = setTimeout(triggerExit, EXIT_TRIGGER);
+    scheduleNext();
+  }
+
+  function pauseHero() {
+    isPaused = true;
+    clearCycle();
+    var v = layers[idx].querySelector('video');
+    if (v) v.pause();
+    if (toggleBtn) {
+      toggleBtn.classList.add('is-paused');
+      toggleBtn.setAttribute('aria-pressed', 'true');
+      toggleBtn.setAttribute('aria-label', '播放');
+    }
+  }
+
+  function playHero() {
+    var v = layers[idx].querySelector('video');
+    if (v) v.play().catch(function(){});
+    startCycle();
+    if (toggleBtn) {
+      toggleBtn.classList.remove('is-paused');
+      toggleBtn.setAttribute('aria-pressed', 'false');
+      toggleBtn.setAttribute('aria-label', '暂停');
+    }
+  }
+
+  function jumpTo(i) {
+    var wasPaused = isPaused;
+    clearCycle();
+    warmupLayer(i);
+    goToCity(i);
+    if (!wasPaused) startCycle();
+  }
+
+  if (prevBtn)   prevBtn.addEventListener('click', function () { jumpTo((idx - 1 + cities.length) % cities.length); });
+  if (nextBtn)   nextBtn.addEventListener('click', function () { jumpTo((idx + 1) % cities.length); });
+  if (toggleBtn) toggleBtn.addEventListener('click', function () { isPaused ? playHero() : pauseHero(); });
+
+  renderTelop(0);
+  updateIndicator(0);
+  startCycle();
 })();
 </script>
 <script src="../assets/js/site.js?v=20260511o" defer></script>

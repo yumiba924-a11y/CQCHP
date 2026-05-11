@@ -389,9 +389,7 @@ ul, ol { list-style: none; }
   height: 100%;
   object-fit: cover;
   display: block;
-  /* GPU レイヤーで描画。scale や animation は付けない（震え防止） */
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  /* GPU 昇格は親 .hero__media-layer のみで完結（二重昇格による微振動を回避） */
 }
 /* TK / NY: ビル・タワー先端まで表示するため上端に揃える */
 .hero__media-layer[data-scene="tk"] video,
