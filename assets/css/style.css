@@ -1767,7 +1767,8 @@ ul, ol { list-style: none; }
   gap: 6px;
   /* FB5-b: 上ヘッダーに深緑薄背景バンド */
   background: rgba(0, 73, 44, 0.08);
-  margin: -28px -28px 24px;
+  /* カードの top/side padding と完全に同値で edge-to-edge 配置 */
+  margin: -32px -28px 24px;
   padding: 14px 28px;
   border-bottom: 1px solid rgba(0, 73, 44, 0.15);
   font-family: var(--font-sans-en);
@@ -1962,6 +1963,11 @@ ul, ol { list-style: none; }
     padding: 28px 24px 24px;
     min-height: 380px;
   }
+  /* head を 768px 時のカード padding に合わせて edge-to-edge */
+  .tx-card__head {
+    margin: -28px -24px 24px;
+    padding: 14px 24px;
+  }
   .transactions__viewport {
     margin: 40px 0 16px;
   }
@@ -1977,6 +1983,11 @@ ul, ol { list-style: none; }
     flex: 0 0 calc(100vw - 2 * var(--gutter));
     min-height: auto;
     padding: 24px 20px 20px;
+  }
+  /* head を 480px 時のカード padding に合わせて edge-to-edge */
+  .tx-card__head {
+    margin: -24px -20px 20px;
+    padding: 12px 20px;
   }
   .tx-card__title { font-size: 1.0625rem; }
   .tx-card__desc { font-size: 0.875rem; }
@@ -2213,7 +2224,9 @@ ul, ol { list-style: none; }
 }
 .track-grid .tx-card__head {
   font-size: 0.875rem;
-  margin-bottom: 32px;
+  /* track-grid のカード padding は 40px 36px なので合わせる */
+  margin: -40px -36px 32px;
+  padding: 14px 36px;
 }
 .track-grid .tx-card__logo {
   height: 140px;
@@ -3369,6 +3382,7 @@ ul, ol { list-style: none; }
   .case-grid { grid-template-columns: repeat(2, 1fr); }
   .track-grid { grid-template-columns: 1fr; gap: 20px; }
   .track-grid .tx-card { min-height: auto; padding: 32px 28px; }
+  .track-grid .tx-card__head { margin: -32px -28px 24px; padding: 14px 28px; }
   .track-grid .tx-card__title { font-size: 1.25rem; min-height: auto; }
   .track-grid .tx-card__desc { font-size: 0.9375rem; }
   .pillar { grid-template-columns: 200px 1fr; gap: var(--space-element); }
