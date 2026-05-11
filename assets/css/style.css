@@ -585,6 +585,12 @@ ul, ol { list-style: none; }
   transform: scaleX(0);
   transform-origin: left center;
 }
+
+/* FB2: 暗背景シーン（VN）用 — 白帯 + 墨文字で視認性確保 */
+.hero__telop.is-light .hero__telop-bar  { background: rgba(255,255,255,0.55); }
+.hero__telop.is-light .hero__telop-jp   { color: #1a1a1a; }
+.hero__telop.is-light .hero__telop-en   { color: rgba(26,26,26,0.65); }
+
 /* === 黒帯：よりゆっくり優雅に展開 === */
 .hero__telop-bar.is-enter {
   animation: cqcHeroBarEnter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;

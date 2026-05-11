@@ -6,7 +6,7 @@
   <title>Capital Quest Corporation, Ltd. | 独立M&A咨询</title>
   <meta name="description" content="独立系M&A咨询公司。作为Capital Financial Holdings (CFH)集团成员,通过覆盖20+国家的Global Alliance Partners (GAP)网络提供跨境M&A咨询服务。">
   <link rel="canonical" href="https://capital-qc.co.jp/cn/">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260511b">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260511d">
 </head>
 <body>
 
@@ -454,7 +454,7 @@
     { key:'tk', label:'TOKYO',     keywordEn:'INDEPENDENT',         keywordJp:'保持独立',           startTime: 0, playbackRate: 1 },
     { key:'ny', label:'NEW YORK',  keywordEn:'TRACK RECORD',        keywordJp:'半世纪业绩',         startTime: 0, playbackRate: 1 },
     { key:'hk', label:'HONG KONG', keywordEn:'CROSSBORDER NETWORK', keywordJp:'20+国家网络',        startTime: 0, playbackRate: 1 },
-    { key:'vn', label:'VIETNAM',   keywordEn:'THE NEXT FUTURE',     keywordJp:'连接高增长亚洲',     startTime: 0, playbackRate: 1 }
+    { key:'vn', label:'VIETNAM',   keywordEn:'THE NEXT FUTURE',     keywordJp:'连接高增长亚洲',     startTime: 0, playbackRate: 1, theme:'light' }
   ];
 
   var CITY_DURATION = 8500;
@@ -482,7 +482,7 @@
     function renderTelop(i) {
       if (!telop) return;
       var c = cities[i];
-      telop.className = 'hero__telop is-enter';
+      telop.className = 'hero__telop is-enter' + (c.theme === 'light' ? ' is-light' : '');
       telop.innerHTML =
         '<div class="hero__telop-bar is-enter" id="hero-telop-bar">' +
           '<div class="hero__telop-jp">' + c.keywordJp + '</div>' +

@@ -6,7 +6,7 @@
   <title>キャピタル・クエスト株式会社 | Capital Quest Corporation, Ltd.</title>
   <meta name="description" content="独立系M&Aアドバイザリー。キャピタル フィナンシャルホールディングス（CFH）グループの一員として、20ヵ国超のグローバル・アライアンス（GAP）を通じてクロスボーダーM&Aアドバイザリーを提供する。">
   <link rel="canonical" href="https://capital-qc.co.jp/">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260511b">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260511d">
 </head>
 <body>
 
@@ -507,7 +507,7 @@
     { key:'tk', label:'TOKYO',     keywordEn:'INDEPENDENT',         keywordJp:'独立であり続ける',         startTime: 0, playbackRate: 1    },
     { key:'ny', label:'NEW YORK',  keywordEn:'TRACK RECORD',        keywordJp:'半世紀の実績',             startTime: 0, playbackRate: 1    },  // NY2.mp4 (22s) で playbackRate 通常、ループ点見えず
     { key:'hk', label:'HONG KONG', keywordEn:'CROSSBORDER NETWORK', keywordJp:'20ヵ国超のネットワーク',   startTime: 0, playbackRate: 1    },
-    { key:'vn', label:'VIETNAM',   keywordEn:'THE NEXT FUTURE',     keywordJp:'高成長アジアへの接続',     startTime: 0, playbackRate: 1    }
+    { key:'vn', label:'VIETNAM',   keywordEn:'THE NEXT FUTURE',     keywordJp:'高成長アジアへの接続',     startTime: 0, playbackRate: 1, theme:'light' }
   ];
 
   var CITY_DURATION = 8500;   // 1サイクル
@@ -536,7 +536,7 @@
     function renderTelop(i) {
       if (!telop) return;
       var c = cities[i];
-      telop.className = 'hero__telop is-enter';
+      telop.className = 'hero__telop is-enter' + (c.theme === 'light' ? ' is-light' : '');
       telop.innerHTML =
         '<div class="hero__telop-bar is-enter" id="hero-telop-bar">' +
           '<div class="hero__telop-jp">' + c.keywordJp + '</div>' +
