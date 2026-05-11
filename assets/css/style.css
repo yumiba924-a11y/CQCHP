@@ -585,28 +585,17 @@ ul, ol { list-style: none; }
   transform: scaleX(0);
   transform-origin: left center;
 }
-/* === 黒帯：「びよーん」と弾むように登場・退出 === */
+/* === 黒帯：よりゆっくり優雅に展開 === */
 .hero__telop-bar.is-enter {
-  animation: cqcHeroBarEnter 1.4s ease-out 1.4s forwards;
+  animation: cqcHeroBarEnter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
 }
 .hero__telop-bar.is-exit {
   transform-origin: left center;
-  animation: cqcHeroBarExit 1.5s ease-in forwards;
+  /* 文字と同期してゆっくり退場 */
+  animation: cqcHeroBarExit 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-/* 登場：オーバーシュート → 縮み → 微小オーバーシュート → 着地 */
-@keyframes cqcHeroBarEnter {
-  0%   { transform: scaleX(0); }
-  55%  { transform: scaleX(1.07); }
-  75%  { transform: scaleX(0.97); }
-  92%  { transform: scaleX(1.02); }
-  100% { transform: scaleX(1); }
-}
-/* 退出：一瞬伸びてから収縮 */
-@keyframes cqcHeroBarExit {
-  0%   { transform: scaleX(1); }
-  12%  { transform: scaleX(1.04); }
-  100% { transform: scaleX(0); }
-}
+@keyframes cqcHeroBarEnter { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes cqcHeroBarExit  { from { transform: scaleX(1); } to { transform: scaleX(0); } }
 
 /* === 文字：opacity + slide + blur のレイヤード演出 === */
 .hero__telop-jp {
