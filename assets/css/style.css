@@ -1826,6 +1826,13 @@ ul, ol { list-style: none; }
   max-width: 140px;
 }
 
+/* BridgePoint ロゴだけ大きく上に張り出して緑バンドにかぶるため、
+   そのカードのロゴコンテナ高さを 140px に拡張 */
+.tx-card__logo:has(.tx-card__logo-img[src*="bridgepoint"]),
+.track-grid .tx-card__logo:has(.tx-card__logo-img[src*="bridgepoint"]) {
+  height: 140px;
+}
+
 /* FUNAI は白ロゴのため白背景で消える → invert で黒に反転 */
 .tx-card__logo-img[src*="funai"] {
   filter: invert(1);
