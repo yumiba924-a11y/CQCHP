@@ -613,9 +613,9 @@
     if (nextBtn)   nextBtn.addEventListener('click', function () { jumpTo((idx + 1) % cities.length); });
     if (toggleBtn) toggleBtn.addEventListener('click', function () { if (isPaused) playHero(); else pauseHero(); });
 
-    if (!prefersReduce) {
-      startCycle();
-    }
+    // 始终启动循环（不论 prefers-reduced-motion 设定）
+    // CSS @media (prefers-reduced-motion: reduce) 会单独抑制各元素的进入/退出动画。
+    startCycle();
   }
 })();
 </script>

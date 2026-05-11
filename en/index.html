@@ -640,9 +640,9 @@
     if (nextBtn)   nextBtn.addEventListener('click', function () { jumpTo((idx + 1) % cities.length); });
     if (toggleBtn) toggleBtn.addEventListener('click', function () { if (isPaused) playHero(); else pauseHero(); });
 
-    if (!prefersReduce) {
-      startCycle();
-    }
+    // Always start cycle regardless of prefers-reduced-motion;
+    // CSS @media (prefers-reduced-motion: reduce) handles per-element animation suppression.
+    startCycle();
   }
 })();
 </script>

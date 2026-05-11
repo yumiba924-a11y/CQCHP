@@ -677,9 +677,9 @@
     if (nextBtn)   nextBtn.addEventListener('click', function () { jumpTo((idx + 1) % cities.length); });
     if (toggleBtn) toggleBtn.addEventListener('click', function () { if (isPaused) playHero(); else pauseHero(); });
 
-    if (!prefersReduce) {
-      startCycle();
-    }
+    // サイクルは prefers-reduced-motion に関わらず常に開始
+    // （CSS側の @media (prefers-reduced-motion: reduce) で進入/退出アニメだけ抑制される）
+    startCycle();
   }
 })();
 </script>
