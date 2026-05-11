@@ -4176,6 +4176,33 @@ html.card-c .tx-card__region { color: var(--c-forest); }
 html.card-c .tx-card__type   { color: var(--c-forest); opacity: 0.75; }
 html.card-c .tx-card__desc   { color: var(--c-forest); }
 
+/* D案：B + 中央揃え（ロゴ・タイトル・罫線） */
+html.card-d .tx-card__head {
+  background: rgba(0, 73, 44, 0.08);
+  margin: -28px -28px 24px;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(0, 73, 44, 0.15);
+}
+html.card-d .tx-card__region { color: var(--c-forest); }
+html.card-d .tx-card__type   { color: var(--c-forest); opacity: 0.75; }
+html.card-d .tx-card__logo   { justify-content: center; }
+html.card-d .tx-card__title  { text-align: center; }
+html.card-d .tx-card__rule   { margin-left: auto; margin-right: auto; }
+
+/* E案：C + 中央揃え（バンド+深緑+中央揃え） */
+html.card-e .tx-card__head {
+  background: rgba(0, 73, 44, 0.08);
+  margin: -28px -28px 24px;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(0, 73, 44, 0.15);
+}
+html.card-e .tx-card__region { color: var(--c-forest); }
+html.card-e .tx-card__type   { color: var(--c-forest); opacity: 0.75; }
+html.card-e .tx-card__desc   { color: var(--c-forest); }
+html.card-e .tx-card__logo   { justify-content: center; }
+html.card-e .tx-card__title  { text-align: center; }
+html.card-e .tx-card__rule   { margin-left: auto; margin-right: auto; }
+
 /* プレビュー切替パネル */
 .card-preview-toggle {
   position: fixed;
