@@ -280,7 +280,7 @@ ul, ol { list-style: none; }
   align-items: center;
   gap: 12px;
   font-family: var(--font-sans-en);
-  font-size: 1.5rem;  /* 24px (元 12px、2 倍) */
+  font-size: 1.5rem;  /* 24px */
   letter-spacing: 0.15em;
 }
 .site-nav__lang span { color: var(--c-ink-faint); }
@@ -985,7 +985,7 @@ ul, ol { list-style: none; }
   .gap-network__eyebrow { font-size: 0.875rem; }   /* 14px */
   .gap-network .section-header h2 { font-size: 1.5rem; }  /* 24px */
   .gap-network .gap-network__lead,
-  .gap-network p.gap-network__lead { font-size: 0.75rem; }  /* 12px (元 ≒19.4px) */
+  .gap-network p.gap-network__lead { font-size: 0.75rem; }  /* 12px */
 }
 
 .gap-network__eyebrow,
@@ -1770,7 +1770,7 @@ ul, ol { list-style: none; }
   padding: 14px 28px;
   border-bottom: 1px solid rgba(0, 73, 44, 0.15);
   font-family: var(--font-sans-en);
-  font-size: 1.4375rem;  /* 23px (元 13px) */
+  font-size: 1.4375rem;  /* 23px */
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1819,7 +1819,7 @@ ul, ol { list-style: none; }
   max-width: 110px;
 }
 
-/* BridgePoint は正方形ロゴのため横幅制約を緩めて視認性確保（2 倍） */
+/* BridgePoint は正方形ロゴのため横幅制約を緩めて視認性確保 */
 .tx-card__logo--dual .tx-card__logo-img[src*="bridgepoint"] {
   max-height: 140px;
   max-width: 140px;
@@ -1900,7 +1900,7 @@ ul, ol { list-style: none; }
 
 .tx-card__advisor {
   font-family: var(--font-sans-en);
-  font-size: 1.125rem;  /* 18px (元 13px) */
+  font-size: 1.125rem;  /* 18px */
   letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--c-forest);
@@ -2137,7 +2137,7 @@ ul, ol { list-style: none; }
 }
 .track-stats__label {
   font-family: var(--font-sans-en);
-  font-size: 1.25rem;  /* 20px (元 14px) */
+  font-size: 1.25rem;  /* 20px */
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-ink-muted);
@@ -2167,7 +2167,7 @@ ul, ol { list-style: none; }
 }
 .track-tab {
   font-family: var(--font-sans-en);
-  font-size: 1.3125rem;  /* 21px (元 16px) */
+  font-size: 1.3125rem;  /* 21px */
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-ink-muted);
@@ -2183,7 +2183,7 @@ ul, ol { list-style: none; }
 .track-tab__count {
   font-family: var(--font-serif-en);
   font-style: italic;
-  font-size: 1.25rem;  /* 20px (元 15px) */
+  font-size: 1.25rem;  /* 20px */
   margin-left: 10px;
   color: var(--c-ink-faint);
 }
@@ -2238,7 +2238,7 @@ ul, ol { list-style: none; }
   max-height: 60px;
   max-width: 130px;
 }
-/* track-grid 内でも BridgePoint だけは 2 倍 */
+/* track-grid 内でも BridgePoint 専用サイズ */
 .track-grid .tx-card__logo--dual .tx-card__logo-img[src*="bridgepoint"] {
   max-height: 140px;
   max-width: 140px;
@@ -2708,7 +2708,7 @@ ul, ol { list-style: none; }
   display: block;
 }
 @media (max-width: 1024px) {
-  .group-card__name { font-size: 0.8125rem; }  /* 13px (元 20px) */
+  .group-card__name { font-size: 0.8125rem; }  /* 13px */
 }
 .group-card__role {
   display: block;
@@ -2833,7 +2833,7 @@ ul, ol { list-style: none; }
   margin: 0 0 14px;
 }
 @media (max-width: 1024px) {
-  .site-support__line { font-size: 0.8125rem; line-height: 1.65; }  /* 13px (元 28px) */
+  .site-support__line { font-size: 0.8125rem; line-height: 1.65; }  /* 13px */
   .site-support__line .br-mobile { display: inline; }
 }
 .site-support__line .br-mobile { display: none; }  /* PC では改行しない */
