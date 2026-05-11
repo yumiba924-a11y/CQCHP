@@ -4178,13 +4178,17 @@ html.motion-subtle [data-anim] {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* Moderate：フェード + 24px 上スライド + ease-out-expo、0.7s */
+/* Moderate：Vietnam Weekly と同じ style — フェード + 30px 上スライド、0.7s ease */
 html.motion-moderate [data-anim] {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
+/* スタガード（同一親内のサブ要素を 0.1s ずつ遅延） */
+html.motion-moderate [data-anim-delay="1"] { transition-delay: 0.1s; }
+html.motion-moderate [data-anim-delay="2"] { transition-delay: 0.2s; }
+html.motion-moderate [data-anim-delay="3"] { transition-delay: 0.3s; }
+html.motion-moderate [data-anim-delay="4"] { transition-delay: 0.4s; }
 
 /* Aggressive：フェード + 40px 上スライド + scale + blur、1.0s */
 html.motion-aggressive [data-anim] {

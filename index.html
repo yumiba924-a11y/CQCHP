@@ -6,7 +6,7 @@
   <title>キャピタル・クエスト株式会社 | Capital Quest Corporation, Ltd.</title>
   <meta name="description" content="独立系M&Aアドバイザリー。キャピタル フィナンシャルホールディングス（CFH）グループの一員として、20ヵ国超のグローバル・アライアンス（GAP）を通じてクロスボーダーM&Aアドバイザリーを提供する。">
   <link rel="canonical" href="https://capital-qc.co.jp/">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260511m">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260511n">
 
   <!-- Scroll motion preview: ?motion=subtle / moderate / aggressive -->
   <script>
@@ -793,6 +793,16 @@
 
     var targets = document.querySelectorAll(selectors.join(','));
     targets.forEach(function(t) { t.setAttribute('data-anim', ''); });
+
+    // 同一セクション内に複数要素がある場合、出現順に 0.1s ずつ stagger
+    // （Vietnam Weekly の reveal-delay-N 相当）
+    var sections = document.querySelectorAll('.section, .chairman, .transactions, .gap-network');
+    sections.forEach(function(sec) {
+      var inSection = sec.querySelectorAll('[data-anim]');
+      inSection.forEach(function(el, idx) {
+        if (idx > 0 && idx <= 4) el.setAttribute('data-anim-delay', String(idx));
+      });
+    });
 
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
