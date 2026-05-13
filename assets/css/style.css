@@ -2469,8 +2469,8 @@ ul, ol { list-style: none; }
 }
 .career-timeline li {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 18px;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
   padding: 12px 0;
   border-bottom: 1px solid var(--c-border-soft, rgba(0,0,0,0.05));
   font-size: 1rem;
