@@ -2727,75 +2727,26 @@ ul, ol { list-style: none; }
 }
 
 /* =========================================================
-   Contact CTA — ヘッダーナビ内 / フッター / Teamカード
+   Contact — Teamカード個人mailto:ボタン（アイコンのみ）
    ========================================================= */
-
-/* ヘッダーナビ右端の「お問い合わせ」CTA */
-.site-nav .site-nav__cta {
-  background: var(--c-forest);
-  color: #fff;
-  padding: 10px 22px;
-  border-radius: 4px;
-  font-size: 1rem;
-  letter-spacing: 0.06em;
-  transition: background var(--duration) var(--ease), opacity var(--duration) var(--ease);
-}
-.site-nav .site-nav__cta:hover {
-  background: #003820;
-  opacity: 1;
-}
-.site-nav .site-nav__cta::after { display: none; }
-
-@media (max-width: 1024px) {
-  /* モバイル時はドロップダウン内のボタンとして表示 */
-  .site-nav .site-nav__cta {
-    margin: 12px 24px 16px;
-    text-align: center;
-    border-radius: 4px;
-    padding: 14px 24px;
-    border-bottom: 0 !important;
-  }
-}
-
-/* フッターの「お問い合わせ」リンク */
-.site-footer__contact-link {
-  display: inline-block;
-  margin-top: 12px;
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  font-family: var(--font-gothic);
-  font-size: 0.9375rem;
-  letter-spacing: 0.04em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding-bottom: 2px;
-  transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
-}
-.site-footer__contact-link:hover {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-/* Teamカード expanded 内の個人mailto:ボタン */
 .person-card__contact {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  margin-top: 28px;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-top: 24px;
   background: transparent;
   color: var(--c-forest);
   border: 1px solid var(--c-forest);
-  border-radius: 4px;
+  border-radius: 8px;
   text-decoration: none;
-  font-family: var(--font-gothic);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
   transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
 }
 .person-card__contact::before {
   content: "✉";
-  font-size: 1rem;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 .person-card__contact:hover {
   background: var(--c-forest);
