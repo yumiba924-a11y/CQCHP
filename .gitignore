@@ -43,3 +43,9 @@ __pycache__/
 *.env
 *.env.local
 .env.*
+
+# Email / review files (内部資料、リポジトリに含めない)
+*.msg
+*.eml
+_*review*/
+_*feedback*/
